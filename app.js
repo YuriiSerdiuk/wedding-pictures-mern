@@ -4,15 +4,12 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 
 app.use(express.static("uploads"));
 app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 // //=======router
 // app.use("/auth", require("./routes/auth.routes"));
@@ -24,6 +21,12 @@ app.get("/", (req, res) => {
 // app.post("/", (req, res) => {
 //   res.json({ test: "post!" });
 // });
+
+app.use("/", express.static(path.join(__dirname, "client", "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 async function start() {
   try {
