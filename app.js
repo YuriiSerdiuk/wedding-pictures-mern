@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 9988;
+const server = require("http").Server(app);
+const PORT = 9988;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -42,8 +43,8 @@ async function start() {
     console.log("connect to database");
 
     //start server
-    app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`);
+    server.listen(PORT, () => {
+      console.log(`Server is started on port №${PORT}`);
     });
   } catch (e) {
     console.log("Server Error", e.message);
