@@ -23,10 +23,10 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 //   res.json({ test: "post!" });
 // });
 
-app.use("/", express.static(path.join(__dirname, "client", "build")));
+// app.use("/", express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {
-  res.json({ test: "message!" });
+  res.send("Hello World");
 });
 
 // app.get("*", (req, res) => {
