@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 //   res.json({ test: "post!" });
 // });
 
-// app.use("/", express.static(path.join(__dirname, "client", "build")));
+app.use("/", express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
