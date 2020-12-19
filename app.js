@@ -26,12 +26,8 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 // app.use("/", express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {
-  res.send("Hello World");
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-// });
 
 async function start() {
   try {
