@@ -1,9 +1,9 @@
 import axios from "axios";
-import { DEV_URL, URL_PATHS, URL_FIREBASE } from "../constants/api.constants";
+import { DEV_URL, URL_PATHS } from "../constants/api.constants";
 
 class Api {
   instance = axios.create({
-    baseURL: URL_FIREBASE,
+    baseURL: DEV_URL,
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",

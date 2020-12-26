@@ -1,20 +1,19 @@
 const express = require("express");
 const app = express();
-const server = require("http").Server(app);
 const PORT = process.env.PORT || 9988;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 
-app.use(express.static("uploads"));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // //=======router
-// app.use("/auth", require("./routes/auth.routes"));
-// app.use("/upload", require("./routes/upload.routes"));
+ app.use("/auth", require("./routes/auth.routes"));
+app.use("/upload", require("./routes/upload.routes"));
 
 // app.get("/", (req, res) => {
 //   res.json({ test: "message!" });
@@ -43,7 +42,7 @@ async function start() {
     console.log("connect to database");
 
     //start server
-    server.listen(PORT, () => {
+    app.listen(PORT, () => {
       console.log(`Server is started on port №${PORT}`);
     });
   } catch (e) {
