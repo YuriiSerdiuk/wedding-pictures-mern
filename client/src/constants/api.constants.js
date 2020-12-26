@@ -1,5 +1,4 @@
-// export const URL =
-//   "https://condescending-johnson-414c83.netlify.app/.netlify/functions/api";
+export const URL = "https://wedding-pictures.herokuapp.com";
 // export const URL_FIREBASE =
 //   "https://us-central1-firsttest-1563272577879.cloudfunctions.net/app";
 
