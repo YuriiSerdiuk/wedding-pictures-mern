@@ -63,4 +63,18 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// /auth/delete
+router.delete("/delete/uzer", async (req, res) => {
+  try {
+    const { email } = req.body;
+    console.log(req.body);
+    await User.deleteOne({ email });
+
+    await user.save();
+    res.status(201).json({ message: "User deleted" });
+  } catch (e) {
+    res.status(500).json({ message: "Some problems with User delete" });
+  }
+});
+
 module.exports = router;

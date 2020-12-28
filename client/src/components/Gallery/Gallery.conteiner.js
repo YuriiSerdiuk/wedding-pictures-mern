@@ -1,11 +1,20 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Gallery from "./Gallery";
 import apiServise from "../../api";
 import { toBase64, delay } from "../../utils/helpers";
+import { getPhotosMongoDB } from "../../redux/actions/applicationData.action";
 
 const GalleryContainer = (props) => {
-  const { auth } = props;
+  const auth = useSelector((state) => state.authorisation);
+  const snackbar = useSelector((state) => state.snackbar);
+  const applicationData = useSelector((state) => state.applicationData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+    // eslint-disable-next-line
+  }, [auth]);
 
   const fileSelectedHendler = async (event) => {
     const files = Array.from(event.target.files);
@@ -33,7 +42,13 @@ const GalleryContainer = (props) => {
           lastModifiedDate: file.lastModifiedDate,
           base64: await toBase64(file),
         };
-        const data = await apiServise.uploadImage(obj);
+        try {
+          await apiServise.uploadImage(obj);
+
+          auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+        } catch (error) {
+          alert("error upload");
+        }
       })();
     }
 
@@ -48,14 +63,14 @@ const GalleryContainer = (props) => {
     processArray(files);
   };
 
-  return <Gallery fileSelectedHendler={fileSelectedHendler} {...props} />;
+  return (
+    <Gallery
+      applicationData={applicationData}
+      snackbar={snackbar}
+      fileSelectedHendler={fileSelectedHendler}
+      {...props}
+    />
+  );
 };
 
-const mapStateToProps = ({ authorisation, snackbar }) => ({
-  auth: authorisation,
-  snackbar: snackbar,
-});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GalleryContainer);
+export default GalleryContainer;

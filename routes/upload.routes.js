@@ -2,14 +2,23 @@ const { Router } = require("express");
 var fs = require("file-system");
 const { regType } = require("../utils/constants");
 const { baseUrl } = require("../utils/apiConstants");
-const User = require("../models/User");
+
 const Photo = require("../models/Photo");
 const router = Router();
 
-router.get("/photo", (req, res) => {
-  res.json({ test: " get message!" });
+// get imaget,in post method
+router.post("/photos", async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const photos = await Photo.find({ owner: userId });
+
+    res.json(photos);
+  } catch (e) {
+    res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });
+  }
 });
 
+// add image
 router.post("/photo", async (req, res) => {
   try {
     const { name, userId, base64, base64Type } = req.body;
@@ -39,10 +48,24 @@ router.post("/photo", async (req, res) => {
 
     await photo.save();
 
-    res.status(201).json({ image: `${baseUrl.host}/${filepath}` });
+    res.status(201).json({ image: `${baseUrl.heroku}/${filepath}` });
   } catch (error) {
     console.log("error", error);
     res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });
+  }
+});
+
+// /auth/delete
+router.delete("/delete/photo", async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log(req.body);
+    await User.deleteOne({ id });
+
+    await user.save();
+    res.status(201).json({ message: "Photo deleted" });
+  } catch (e) {
+    res.status(500).json({ message: "Some problems with delete Photo" });
   }
 });
 

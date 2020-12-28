@@ -6,13 +6,13 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 
-app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // //=======router
- app.use("/auth", require("./routes/auth.routes"));
+app.use("/auth", require("./routes/auth.routes"));
 app.use("/upload", require("./routes/upload.routes"));
 
 // app.get("/", (req, res) => {

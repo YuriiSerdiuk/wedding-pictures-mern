@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUp(props) {
-  const { fetchSignUp, history } = props;
+  const { fetchSignUp } = props;
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
 

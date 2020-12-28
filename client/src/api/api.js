@@ -50,12 +50,13 @@ class Api {
     return data;
   }
 
+  async getPhotos(params) {
+    const data = await this.post(URL_PATHS.GetImages, params, {});
+    return data;
+  }
+
   async uploadImage(params) {
-    const data = await this.post(URL_PATHS.Upload, params, {
-      // headers: {
-      //   "Content-Type": "multipart/form-data",
-      // },
-    });
+    const data = await this.post(URL_PATHS.Upload, params, {});
     return data;
   }
 }
