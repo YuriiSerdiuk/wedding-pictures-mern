@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import Gallery from "./Gallery";
 import apiServise from "../../api";
 import { toBase64, delay } from "../../utils/helpers";
 import { getPhotosMongoDB } from "../../redux/actions/applicationData.action";
+import { getlogOut } from "../../redux/actions/auth.action";
 
 const GalleryContainer = (props) => {
   const auth = useSelector((state) => state.authorisation);
@@ -15,6 +17,8 @@ const GalleryContainer = (props) => {
     auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
     // eslint-disable-next-line
   }, [auth]);
+
+  const [handleOpen, setHandleOpen] = useState({ open: false });
 
   const fileSelectedHendler = async (event) => {
     const files = Array.from(event.target.files);
@@ -62,12 +66,24 @@ const GalleryContainer = (props) => {
 
     processArray(files);
   };
+  //logOut
+  const handleLogOut = () => {
+    dispatch(getlogOut());
+  };
+
+  const handleClick = () => {
+    setHandleOpen({ open: true });
+  };
 
   return (
     <Gallery
       applicationData={applicationData}
       snackbar={snackbar}
       fileSelectedHendler={fileSelectedHendler}
+      handleLogOut={handleLogOut}
+      handleOpen={handleOpen}
+      handleClick={handleClick}
+      setHandleOpen={setHandleOpen}
       {...props}
     />
   );

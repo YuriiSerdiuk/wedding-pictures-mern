@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
+    backgroundColor: "red",
   },
   input: {
     display: "none",

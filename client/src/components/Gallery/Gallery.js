@@ -1,15 +1,15 @@
 import withRoot from "../modules/withRoot";
 import React from "react";
 import AppAppBar from "../modules/views/AppAppBar";
-import UploadButton from "../UploadButton";
-import PhotoLayaut from "../PhotoLayaut";
+import GalleryDraver from "../GalleryDraver";
+import App from "../AutoRotatingCarouselModal";
 
 const Gallery = (props) => {
   return (
     <>
       <AppAppBar />
-      <UploadButton {...props} />
-      <PhotoLayaut {...props} />
+      <App {...props} />
+      <GalleryDraver {...props} />
     </>
   );
 };

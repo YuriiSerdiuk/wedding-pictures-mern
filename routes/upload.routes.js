@@ -31,8 +31,6 @@ router.post("/photo", async (req, res) => {
     }
 
     const filepath = `uploads/${userId}/${[name]}`;
-    console.log("filepath", `${baseUrl.heroku}/${filepath}`);
-
     const dataNew = base64.replace(regType[base64Type], "");
     const buf = new Buffer.from(dataNew, "base64");
     fs.writeFileSync(filepath, buf, (err) => {
@@ -41,14 +39,14 @@ router.post("/photo", async (req, res) => {
     });
 
     const photo = new Photo({
-      href: `${baseUrl.heroku}/${filepath}`,
+      href: `${baseUrl.develop}/${filepath}`,
       name: name,
       owner: userId,
     });
 
     await photo.save();
 
-    res.status(201).json({ image: `${baseUrl.heroku}/${filepath}` });
+    res.status(201).json({ image: `${baseUrl.develop}/${filepath}` });
   } catch (error) {
     console.log("error", error);
     res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });

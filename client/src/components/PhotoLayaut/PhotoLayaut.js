@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FullWidthGrid(props) {
-  const { applicationData = [] } = props;
+  const { applicationData = [], handleClick } = props;
   const { photos } = applicationData;
   const classes = useStyles();
 
@@ -36,6 +36,7 @@ export default function FullWidthGrid(props) {
                     height="140"
                     image={href}
                     title="Contemplative Reptile"
+                    onClick={handleClick}
                   />
                 </CardActionArea>
               </Paper>
