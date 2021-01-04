@@ -39,14 +39,14 @@ router.post("/photo", async (req, res) => {
     });
 
     const photo = new Photo({
-      href: `${baseUrl.develop}/${filepath}`,
+      href: `${baseUrl.heroku}/${filepath}`,
       name: name,
       owner: userId,
     });
 
     await photo.save();
 
-    res.status(201).json({ image: `${baseUrl.develop}/${filepath}` });
+    res.status(201).json({ image: `${baseUrl.heroku}/${filepath}` });
   } catch (error) {
     console.log("error", error);
     res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });

@@ -25,7 +25,9 @@ export default function FullWidthGrid(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {photos.map(({ href, name }) => {
+        {photos.map((item) => {
+          const { href, name } = item;
+
           return (
             <Grid item xs={12} sm={3}>
               <Paper className={classes.paper}>
