@@ -19,6 +19,7 @@ const GalleryContainer = (props) => {
   }, [auth]);
 
   const [handleOpen, setHandleOpen] = useState({ open: false });
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const fileSelectedHendler = async (event) => {
     const files = Array.from(event.target.files);
@@ -71,7 +72,8 @@ const GalleryContainer = (props) => {
     dispatch(getlogOut());
   };
 
-  const handleClick = () => {
+  const handleClick = (id) => {
+    setSlideIndex(id || 0);
     setHandleOpen({ open: true });
   };
 
@@ -83,6 +85,8 @@ const GalleryContainer = (props) => {
       handleLogOut={handleLogOut}
       handleOpen={handleOpen}
       handleClick={handleClick}
+      slideIndex={slideIndex}
+      setSlideIndex={setSlideIndex}
       setHandleOpen={setHandleOpen}
       {...props}
     />

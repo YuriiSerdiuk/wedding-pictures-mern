@@ -1,14 +1,16 @@
 import React from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Image from "material-ui-image";
-import { AutoRotatingCarousel } from "material-auto-rotating-carousel";
+import { AutoRotatingCarousel } from "../AutoRotatingCarousel";
 
 const AutoRotatingCarouselModal = ({
   handleOpen,
   setHandleOpen,
-  isMobile,
-  photos,
+  applicationData,
+  photoIndex,
+  ...otherProps
 }) => {
+  const { photos } = applicationData;
   return (
     <div>
       <AutoRotatingCarousel
@@ -16,9 +18,10 @@ const AutoRotatingCarouselModal = ({
         onClose={() => setHandleOpen({ open: false })}
         onStart={() => setHandleOpen({ open: false })}
         autoplay={false}
-        mobile={isMobile}
+        mobile={useMediaQuery("(max-width:1000px)")}
         style={{ position: "absolute" }}
-        onChange={(e) => console.log("e", e)}
+        photoIndex={photoIndex}
+        {...otherProps}
       >
         {photos.map((item) => {
           return (
@@ -36,19 +39,4 @@ const AutoRotatingCarouselModal = ({
   );
 };
 
-function App(props) {
-  const { applicationData } = props;
-  const { photos } = applicationData;
-  const matches = useMediaQuery("(max-width:1000px)");
-  return (
-    <>
-      <AutoRotatingCarouselModal
-        isMobile={matches}
-        photos={photos}
-        {...props}
-      />
-    </>
-  );
-}
-
-export default App;
+export default AutoRotatingCarouselModal;

@@ -39,6 +39,7 @@ router.post("/photo", async (req, res) => {
     });
 
     const photo = new Photo({
+      // href: `${baseUrl.develop}/${filepath}`,
       href: `${baseUrl.heroku}/${filepath}`,
       name: name,
       owner: userId,

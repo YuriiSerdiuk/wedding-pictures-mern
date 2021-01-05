@@ -25,7 +25,7 @@ export default function FullWidthGrid(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {photos.map((item) => {
+        {photos.map((item, index) => {
           const { href, name } = item;
 
           return (
@@ -38,7 +38,9 @@ export default function FullWidthGrid(props) {
                     height="140"
                     image={href}
                     title="Contemplative Reptile"
-                    onClick={handleClick}
+                    onClick={() => {
+                      handleClick(index);
+                    }}
                   />
                 </CardActionArea>
               </Paper>
