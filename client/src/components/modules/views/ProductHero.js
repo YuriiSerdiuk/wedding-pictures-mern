@@ -62,7 +62,7 @@ function ProductHero(props) {
         Register
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-        Share your experience
+        Or sign in
       </Typography>
     </ProductHeroLayout>
   );
