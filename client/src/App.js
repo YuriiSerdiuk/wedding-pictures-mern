@@ -7,15 +7,20 @@ import SignUp from "./components/SignUp";
 import Gallery from "./components/Gallery";
 
 function App(props) {
+  const {
+    auth: { isAuthenticated },
+  } = props;
+
+  console.log("App", isAuthenticated);
   return (
     <div className="App">
       <div>
         <Switch>
           <Route path="/sign-in">
-            <SignIn {...props} />
+            {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />}
           </Route>
           <Route path="/sign-up">
-            <SignUp {...props} />
+            {isAuthenticated ? <Gallery {...props} /> : <SignUp {...props} />}
           </Route>
           <Route path="/gallery">
             <Gallery {...props} />

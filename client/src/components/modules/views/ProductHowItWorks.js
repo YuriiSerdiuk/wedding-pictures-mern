@@ -1,29 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Button from '../components/Button';
-import Typography from '../components/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Button from "../components/Button";
+import Typography from "../components/Typography";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import PhotoSizeSelectActualIcon from "@material-ui/icons/PhotoSizeSelectActual";
+import ShareIcon from "@material-ui/icons/Share";
 
 const styles = (theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
     backgroundColor: theme.palette.secondary.light,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   container: {
     marginTop: theme.spacing(10),
     marginBottom: theme.spacing(15),
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   item: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     padding: theme.spacing(0, 5),
   },
   title: {
@@ -41,13 +44,17 @@ const styles = (theme) => ({
     marginBottom: theme.spacing(4),
   },
   curvyLines: {
-    pointerEvents: 'none',
-    position: 'absolute',
+    pointerEvents: "none",
+    position: "absolute",
     top: -180,
     opacity: 0.7,
   },
   button: {
     marginTop: theme.spacing(8),
+  },
+  icon: {
+    fontSize: 100,
+    margin: "30px 0  50px",
   },
 });
 
@@ -62,7 +69,12 @@ function ProductHowItWorks(props) {
           className={classes.curvyLines}
           alt="curvy lines"
         />
-        <Typography variant="h4" marked="center" className={classes.title} component="h2">
+        <Typography
+          variant="h4"
+          marked="center"
+          className={classes.title}
+          component="h2"
+        >
           How it works
         </Typography>
         <div>
@@ -70,40 +82,27 @@ function ProductHowItWorks(props) {
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>1.</div>
-                <img
-                  src="/static/themes/onepirate/productHowItWorks1.svg"
-                  alt="suitcase"
-                  className={classes.image}
-                />
+                <LockOpenIcon className={classes.icon} />
                 <Typography variant="h5" align="center">
-                  Appointment every Wednesday 9am.
+                  Sign Up and Sign In
                 </Typography>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>2.</div>
-                <img
-                  src="/static/themes/onepirate/productHowItWorks2.svg"
-                  alt="graph"
-                  className={classes.image}
-                />
+                <PhotoSizeSelectActualIcon className={classes.icon} />
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so be quick.
+                  Add photos to the gallery
                 </Typography>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
-                <img
-                  src="/static/themes/onepirate/productHowItWorks3.svg"
-                  alt="clock"
-                  className={classes.image}
-                />
+                <ShareIcon className={classes.icon} />
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                  {"Create a sharing link with slide effects"}
                 </Typography>
               </div>
             </Grid>
