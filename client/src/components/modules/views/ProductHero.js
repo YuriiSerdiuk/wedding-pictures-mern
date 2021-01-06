@@ -30,7 +30,7 @@ const styles = (theme) => ({
 });
 
 function ProductHero(props) {
-  const { classes } = props;
+  const { classes, gotoSignUp } = props;
 
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
@@ -57,7 +57,7 @@ function ProductHero(props) {
         size="large"
         className={classes.button}
         component="a"
-        href="/premium-themes/onepirate/sign-up/"
+        onClick={gotoSignUp}
       >
         Register
       </Button>

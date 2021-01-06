@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { SnackbarProvider } from "notistack";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import AppContainer from "./App.container";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux";
@@ -11,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <SnackbarProvider maxSnack={3}>
-        <AppContainer />
+        <Router>
+          <AppContainer />
+        </Router>
       </SnackbarProvider>
     </Provider>
   </React.StrictMode>,

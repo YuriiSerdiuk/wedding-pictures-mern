@@ -1,4 +1,5 @@
 import axios from "axios";
+// eslint-disable-next-line
 import { URL, DEV_URL, URL_PATHS } from "../constants/api.constants";
 
 class Api {

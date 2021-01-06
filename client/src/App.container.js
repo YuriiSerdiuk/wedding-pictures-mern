@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
+import { useHistory } from "react-router-dom";
+
 import App from "./App";
 import {
   fetchSignUp,
@@ -13,6 +15,7 @@ import { storageName } from "./constants/misc.constants";
 const AppContainer = (props) => {
   const { snackbar, storageSignIn } = props;
   const { enqueueSnackbar } = useSnackbar();
+  let history = useHistory();
 
   // SnackBarMessage
   useEffect(() => {
@@ -30,7 +33,11 @@ const AppContainer = (props) => {
     }
   }, [storageSignIn]);
 
-  return <App {...props} />;
+  const gotoSignUp = () => {
+    history.push("/sign-up");
+  };
+
+  return <App gotoSignUp={gotoSignUp} {...props} />;
 };
 
 const mapStateToProps = ({ authorisation, snackbar }) => ({
