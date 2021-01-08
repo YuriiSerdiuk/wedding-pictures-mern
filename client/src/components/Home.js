@@ -17,7 +17,7 @@ function Index(props) {
       <ProductHero {...props} />
       <ProductValues />
       <ProductCategories />
-      <ProductHowItWorks />
+      <ProductHowItWorks {...props} />
       <ProductCTA />
       <ProductSmokingHero />
       <AppFooter />

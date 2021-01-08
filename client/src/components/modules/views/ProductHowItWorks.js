@@ -53,13 +53,13 @@ const styles = (theme) => ({
     marginTop: theme.spacing(8),
   },
   icon: {
+    color: theme.palette.primary.main,
     fontSize: 100,
     margin: "30px 0  50px",
   },
 });
-
 function ProductHowItWorks(props) {
-  const { classes } = props;
+  const { classes, gotoSignUp } = props;
 
   return (
     <section className={classes.root}>
@@ -114,7 +114,8 @@ function ProductHowItWorks(props) {
           variant="contained"
           className={classes.button}
           component="a"
-          href="/premium-themes/onepirate/sign-up/"
+          onClick={gotoSignUp}
+          // href="/premium-themes/onepirate/sign-up/"
         >
           Get started
         </Button>

@@ -11,7 +11,6 @@ function App(props) {
     auth: { isAuthenticated },
   } = props;
 
-  console.log("App", isAuthenticated);
   return (
     <div className="App">
       <div>

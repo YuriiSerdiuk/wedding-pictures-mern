@@ -57,15 +57,11 @@ function ProductValues(props) {
                 alt="suitcase"
               /> */}
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Іhare photos
               </Typography>
               <Typography variant="h5">
-                {
-                  "From the latest trendy boutique hotel to the iconic palace with XXL pool"
-                }
-                {
-                  ", go for a mini-vacation just a few subway stops away from your home."
-                }
+                {"Make a gallery of wedding photos"}
+                {", and share with friends."}
               </Typography>
             </div>
           </Grid>
@@ -77,13 +73,11 @@ function ProductValues(props) {
                 alt="graph"
               /> */}
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                Slide effect
               </Typography>
               <Typography variant="h5">
-                {
-                  "Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… "
-                }
-                {"your Sundays will not be alike."}
+                {"Make viewing photos unforgettable by adding visual "}
+                {"and sound effects."}
               </Typography>
             </div>
           </Grid>
@@ -95,11 +89,11 @@ function ProductValues(props) {
                 alt="clock"
               /> */}
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                free service
               </Typography>
               <Typography variant="h5">
-                {"By registering, you will access specially negotiated rates "}
-                {"that you will not find anywhere else."}
+                {"we take care of your dreams "}
+                {/* {"that you will not find anywhere else."} */}
               </Typography>
             </div>
           </Grid>
