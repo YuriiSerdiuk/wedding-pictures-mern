@@ -20,7 +20,7 @@ function Index(props) {
       <ProductHowItWorks {...props} />
       <ProductCTA />
       <ProductSmokingHero />
-      <AppFooter />
+      <AppFooter {...props} />
     </React.Fragment>
   );
 }

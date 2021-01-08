@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import App from "./App";
 import {
@@ -13,8 +13,11 @@ import { getSnackbarMessage } from "./redux/actions/snackbar.action";
 import { storageName } from "./constants/misc.constants";
 
 const AppContainer = (props) => {
-  const { snackbar, storageSignIn } = props;
   const { enqueueSnackbar } = useSnackbar();
+  const auth = useSelector((state) => state.authorisation);
+  const snackbar = useSelector((state) => state.snackbar);
+  const constants = useSelector((state) => state.constants);
+  const dispatch = useDispatch();
   let history = useHistory();
 
   // SnackBarMessage
@@ -29,27 +32,34 @@ const AppContainer = (props) => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem(storageName));
     if (data && data.token) {
-      storageSignIn(data);
+      dispatch(storageSignIn(data));
     }
+    // eslint-disable-next-line
   }, [storageSignIn]);
 
   const gotoSignUp = () => {
     history.push("/sign-up");
   };
 
-  return <App gotoSignUp={gotoSignUp} {...props} />;
+  return (
+    <App
+      auth={auth}
+      snackbar={snackbar}
+      constants={constants}
+      LANGUAGES={constants.LANGUAGES}
+      gotoSignUp={gotoSignUp}
+      fetchSignUp={() => {
+        dispatch(fetchSignUp());
+      }}
+      fetchSignIn={(e) => {
+        dispatch(fetchSignIn(e));
+      }}
+      getSnackbarMessage={(e) => {
+        dispatch(getSnackbarMessage(e));
+      }}
+      {...props}
+    />
+  );
 };
 
-const mapStateToProps = ({ authorisation, snackbar }) => ({
-  auth: authorisation,
-  snackbar: snackbar,
-});
-
-const mapDispatchToProps = {
-  fetchSignUp,
-  fetchSignIn,
-  getSnackbarMessage,
-  storageSignIn,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default AppContainer;

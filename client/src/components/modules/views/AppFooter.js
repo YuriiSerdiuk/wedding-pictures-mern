@@ -37,18 +37,18 @@ const useStyles = makeStyles((theme) => ({
   icons: {
     display: "flex",
   },
-  icon: {
-    width: 48,
-    height: 48,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: theme.palette.warning.main,
-    marginRight: theme.spacing(1),
-    "&:hover": {
-      backgroundColor: theme.palette.warning.dark,
-    },
-  },
+  // icon: {
+  //   width: 48,
+  //   height: 48,
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   backgroundColor: theme.palette.warning.main,
+  //   marginRight: theme.spacing(1),
+  //   "&:hover": {
+  //     backgroundColor: theme.palette.warning.dark,
+  //   },
+  // },
   list: {
     margin: 0,
     listStyle: "none",
@@ -69,27 +69,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LANGUAGES = [
-  {
-    code: "en-US",
-    name: "English",
-  },
-  {
-    code: "fr-FR",
-    name: "Français",
-  },
-  {
-    code: "ua-UA",
-    name: "Українська",
-  },
-  {
-    code: "ru-RU",
-    name: "Русский",
-  },
-];
-
-export default function AppFooter() {
+export default function AppFooter(props) {
   const classes = useStyles();
+  const { LANGUAGES = [] } = props;
 
   return (
     <Typography component="footer" className={classes.root}>
