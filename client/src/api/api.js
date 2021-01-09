@@ -4,7 +4,7 @@ import { URL, DEV_URL, URL_PATHS } from "../constants/api.constants";
 
 class Api {
   instance = axios.create({
-    baseURL: URL,
+    baseURL: DEV_URL,
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",

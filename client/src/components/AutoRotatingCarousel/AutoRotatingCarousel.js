@@ -113,6 +113,7 @@ const styles = {
   },
   delIcon: {
     color: "red",
+    zIndex: 1000,
   },
   controlButtonBlock: {
     position: "absolute",
@@ -120,7 +121,7 @@ const styles = {
     zIndex: 1000,
     width: "100%",
     height: "70px",
-    bottom: 0,
+    bottom: 50,
     opacity: "0.6",
   },
 };
