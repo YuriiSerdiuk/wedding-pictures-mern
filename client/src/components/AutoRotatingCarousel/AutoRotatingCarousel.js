@@ -206,7 +206,9 @@ const AutoRotatingCarousel = (props) => {
             <div className={classes.controlButtonBlock}>
               <IconButton
                 onClick={() => {
+                  console.log("test");
                   deleteImage({ id, owner });
+                  alert("deleted");
                 }}
                 aria-label="delete"
                 className={classes.delIcon}
