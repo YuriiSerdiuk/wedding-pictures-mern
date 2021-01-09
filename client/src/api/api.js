@@ -60,6 +60,10 @@ class Api {
     const data = await this.post(URL_PATHS.Upload, params, {});
     return data;
   }
+  async deleteImage(params) {
+    const data = await this.post(URL_PATHS.deleteImage, params, {});
+    return data;
+  }
 }
 
 export default new Api();

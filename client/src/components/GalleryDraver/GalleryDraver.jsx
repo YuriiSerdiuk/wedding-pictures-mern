@@ -17,6 +17,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { Link } from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 import UploadButton from "../UploadButton";
 import PhotoLayaut from "../PhotoLayaut";
@@ -103,6 +104,12 @@ const useStyles = makeStyles((theme) => ({
   linkSecondary: {
     color: theme.palette.secondary.main,
   },
+  subAddIcon: {
+    display: "flex",
+    alignItems: "center",
+    fontWeight: "bold",
+    fontSize: "1.2rem",
+  },
 }));
 
 export default function MiniDrawer(props) {
@@ -142,6 +149,9 @@ export default function MiniDrawer(props) {
               <MenuIcon />
             </IconButton>
             <UploadButton {...props} />
+            <Box className={classes.subAddIcon} component="span" m={1}>
+              Add image
+            </Box>
           </div>
           {/* // todo add rout button */}
           <div className={classes.right}>

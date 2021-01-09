@@ -6,5 +6,6 @@ export const URL_PATHS = {
   SignIn: "/auth/login",
   Upload: "/upload/photo",
   GetImages: "/upload/photos",
+  deleteImage: "/upload/delete",
   Test: "",
 };

@@ -9,10 +9,16 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
-    backgroundColor: "red",
+    // backgroundColor: "red",
   },
   input: {
     display: "none",
+  },
+  icon: {
+    width: 48,
+    height: 48,
+    color: theme.palette.primary.dark,
+    border: "1px solid red",
   },
 }));
 
@@ -35,7 +41,7 @@ export default function UploadButtons(props) {
           aria-label="upload picture"
           component="span"
         >
-          <PhotoCamera />
+          <PhotoCamera className={classes.icon} />
         </IconButton>
       </label>
     </div>

@@ -54,15 +54,13 @@ router.post("/photo", async (req, res) => {
   }
 });
 
-// /auth/delete
-router.delete("/delete/photo", async (req, res) => {
+// /upload/delete
+router.post("/delete", async (req, res) => {
   try {
-    const { id } = req.body;
-    console.log(req.body);
-    await User.deleteOne({ id });
-
-    await user.save();
-    res.status(201).json({ message: "Photo deleted" });
+    const { id, owner } = req.body;
+    await Photo.deleteOne({ _id: id });
+    const photos = await Photo.find({ owner: owner });
+    res.status(201).json({ photos });
   } catch (e) {
     res.status(500).json({ message: "Some problems with delete Photo" });
   }

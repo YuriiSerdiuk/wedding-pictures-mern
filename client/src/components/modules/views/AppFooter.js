@@ -5,6 +5,7 @@ import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
+import moment from "moment";
 
 import Typography from "../components/Typography";
 import TextField from "../components/TextField";
@@ -16,7 +17,7 @@ function Copyright() {
       {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
       </Link>{" "} */}
-      {new Date().getFullYear()}
+      {moment().format("LL")}
     </React.Fragment>
   );
 }

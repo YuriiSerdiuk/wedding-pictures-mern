@@ -11,6 +11,7 @@ const AutoRotatingCarouselModal = ({
   ...otherProps
 }) => {
   const { photos } = applicationData;
+
   return (
     <div>
       <AutoRotatingCarousel
@@ -24,13 +25,19 @@ const AutoRotatingCarouselModal = ({
         {...otherProps}
       >
         {photos.map((item) => {
+          const { _id, owner } = item;
           return (
-            <div style={{ position: "relative", overflow: "hidden" }}>
-              <Image
-                src={item.href}
-                alt={item.name}
-                style={{ width: "100%", height: "auto" }}
-              />
+            <div key={_id + "owner"}>
+              <div></div>
+              <div style={{ position: "relative", overflow: "hidden" }}>
+                <Image
+                  id={_id}
+                  owner={owner}
+                  src={item.href}
+                  alt={item.name}
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </div>
             </div>
           );
         })}
