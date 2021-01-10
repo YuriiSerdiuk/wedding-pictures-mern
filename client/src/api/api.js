@@ -8,7 +8,6 @@ class Api {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "Accept-Charset": "utf-8",
     },
   });
 

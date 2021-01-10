@@ -15,14 +15,6 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use("/auth", require("./routes/auth.routes"));
 app.use("/upload", require("./routes/upload.routes"));
 
-// app.get("/", (req, res) => {
-//   res.json({ test: "message!" });
-// });
-// app.post("/", (req, res) => {
-//   console.log(req.body);
-//   res.json({ test: "post!" });
-// });
-
 app.use("/", express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {

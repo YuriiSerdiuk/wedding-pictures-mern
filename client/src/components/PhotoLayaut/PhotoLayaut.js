@@ -29,7 +29,7 @@ export default function FullWidthGrid(props) {
           const { href, name } = item;
 
           return (
-            <Grid item xs={12} sm={3}>
+            <Grid key={index + name} item xs={12} sm={3}>
               <Paper className={classes.paper}>
                 <CardActionArea>
                   <CardMedia
