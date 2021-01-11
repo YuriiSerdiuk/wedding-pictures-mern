@@ -25,14 +25,11 @@ const AutoRotatingCarouselModal = ({
         {...otherProps}
       >
         {photos.map((item) => {
-          const { _id, owner } = item;
+          const { _id } = item;
           return (
             <div key={_id + "owner"}>
-              <div></div>
               <div style={{ position: "relative", overflow: "hidden" }}>
                 <Image
-                  id={_id}
-                  owner={owner}
                   src={item.href}
                   alt={item.name}
                   style={{ width: "100%", height: "auto" }}

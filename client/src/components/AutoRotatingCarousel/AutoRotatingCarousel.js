@@ -15,11 +15,6 @@ import Dots from "material-ui-dots";
 import classNames from "classnames";
 import Carousel from "./SwipableCarouselView";
 import { modulo } from "./util";
-import Image from "material-ui-image";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
-
-import api from "../../api";
 
 const styles = {
   root: {
@@ -111,19 +106,6 @@ const styles = {
   carouselContainer: {
     height: "100%",
   },
-  delIcon: {
-    color: "red",
-    zIndex: 1000,
-  },
-  controlButtonBlock: {
-    position: "absolute",
-    backgroundColor: "black",
-    zIndex: 1000,
-    width: "100%",
-    height: "70px",
-    bottom: 50,
-    opacity: "0.6",
-  },
 };
 
 const AutoRotatingCarousel = (props) => {
@@ -163,14 +145,6 @@ const AutoRotatingCarousel = (props) => {
     setSlideIndex(index);
   };
 
-  const deleteImage = async ({ id, owner }) => {
-    try {
-      const data = await api.deleteImage({ id, owner });
-
-      console.log("data", data);
-    } catch (error) {}
-  };
-
   const landscape = mobile && landscapeProp;
   const transitionDuration = {
     enter: duration.enteringScreen,
@@ -188,41 +162,12 @@ const AutoRotatingCarousel = (props) => {
       onChangeIndex={handleChange}
       slideClassName={classes.slide}
     >
-      {/* {React.Children.map(
-        children,
-        (c) =>
-          console.log(c) ||
-          React.cloneElement(c, {
-            mobile,
-            landscape,
-          })
-      )} */}
-      {children.map((item, index) => {
-        const {
-          props: { children },
-        } = item;
-        const { id, owner, src, alt, style } = children[1].props.children.props;
-        return (
-          <div key={id}>
-            <div className={classes.controlButtonBlock}>
-              <IconButton
-                onClick={() => {
-                  console.log("test");
-                  deleteImage({ id, owner });
-                  alert("deleted");
-                }}
-                aria-label="delete"
-                className={classes.delIcon}
-              >
-                <DeleteIcon fontSize="large" />
-              </IconButton>
-            </div>
-            <div style={{ position: "relative", overflow: "hidden" }}>
-              <Image src={src} alt={alt} style={style} />
-            </div>
-          </div>
-        );
-      })}
+      {React.Children.map(children, (c) =>
+        React.cloneElement(c, {
+          mobile,
+          landscape,
+        })
+      )}
     </Carousel>
   );
 
