@@ -211,7 +211,7 @@ export default function MiniDrawer(props) {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {["Gallery", "Create Share link", "Preview"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -221,7 +221,7 @@ export default function MiniDrawer(props) {
           ))}
         </List>
         <Divider />
-        <List>
+        {/* <List>
           {["All mail", "Trash", "Spam"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
@@ -230,7 +230,7 @@ export default function MiniDrawer(props) {
               <ListItemText primary={text} />
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />

@@ -87,7 +87,7 @@ export default function FullWidthGrid(props) {
                     aria-label="delete"
                     className={classes.delIcon}
                   >
-                    <DeleteIcon fontSize="medium" />
+                    <DeleteIcon fontSize="default" />
                   </IconButton>
                 </div>
               </Paper>
