@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Gallery from "./components/Gallery";
+import AwesomeSlider from "./components/AwesomeSlider";
 
 function App(props) {
   const {
@@ -23,6 +24,9 @@ function App(props) {
           </Route>
           <Route path="/gallery">
             <Gallery {...props} />
+          </Route>
+          <Route path="/test">
+            <AwesomeSlider {...props} />
           </Route>
           <Route path="/">
             <Home {...props} />
