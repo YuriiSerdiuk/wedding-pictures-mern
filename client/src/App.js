@@ -25,7 +25,7 @@ function App(props) {
           <Route path="/gallery">
             <Gallery {...props} />
           </Route>
-          <Route path="/test">
+          <Route path="/slider">
             <AwesomeSlider {...props} />
           </Route>
           <Route path="/">

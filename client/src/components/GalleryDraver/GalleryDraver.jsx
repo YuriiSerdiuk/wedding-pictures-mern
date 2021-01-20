@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,10 +15,10 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
+import ShareIcon from "@material-ui/icons/Share";
+import WallpaperIcon from "@material-ui/icons/Wallpaper";
 
 import UploadButton from "../UploadButton";
 import PhotoLayaut from "../PhotoLayaut";
@@ -110,6 +111,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: "1.2rem",
   },
+  draverLink: {
+    display: "flex",
+    justifyContent: "spaceBetween",
+  },
 }));
 
 export default function MiniDrawer(props) {
@@ -117,6 +122,7 @@ export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  let history = useHistory();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -211,14 +217,40 @@ export default function MiniDrawer(props) {
         </div>
         <Divider />
         <List>
-          {["Gallery", "Create Share link", "Preview"].map((text, index) => (
+          <ListItem
+            button
+            onClick={() => {
+              history.push("/gallery");
+            }}
+            key="Gallery"
+          >
+            <ListItemIcon>
+              <WallpaperIcon />
+            </ListItemIcon>
+            <ListItemText primary="Gallery" />
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={() => {
+              history.push("/slider");
+            }}
+            key="Create Share link"
+          >
+            <ListItemIcon>
+              <ShareIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Go to  Slider`} />
+          </ListItem>
+
+          {/* {["Gallery", "Create Share link", "Preview"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
-          ))}
+          ))} */}
         </List>
         <Divider />
         {/* <List>

@@ -14,26 +14,13 @@ const AwesomeSliderComponent = (props) => {
       animation="cubeAnimation"
       play={true}
       cancelOnInteraction={false} // should stop playing on user interaction
-      interval={6000}
+      interval={2000}
     >
-      <div>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-          alt="for presentational images"
-        />
-      </div>
-      <div>
-        <img
-          src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"
-          alt="for presentational images"
-        />
-      </div>
-      <div>
-        <img
-          src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
-          alt="for presentational images"
-        />
-      </div>
+      {photos.map(({ href, name }) => (
+        <div>
+          <img style={{ width: "100%" }} src={href} alt={name} />
+        </div>
+      ))}
     </AutoplaySlider>
   );
 };
