@@ -119,7 +119,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer(props) {
-  const { auth, handleLogOut } = props;
+  const { auth, handleLogOut, addNewSlider } = props;
+  const { userId } = auth;
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -246,8 +247,10 @@ export default function MiniDrawer(props) {
           <ListItem
             button
             onClick={() => {
-              // history.push("/slider");
-              alert("open additional menu");
+              //todo clean this func
+              const imagesInSlider = [];
+              // add slider
+              addNewSlider(userId, imagesInSlider);
             }}
             key="Generate Slider Link"
           >

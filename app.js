@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 // //=======router
 app.use("/auth", require("./routes/auth.routes"));
 app.use("/upload", require("./routes/upload.routes"));
+app.use("/slider", require("./routes/slider.routes"));
 
 app.use("/", express.static(path.join(__dirname, "client", "build")));
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
+// import DragDrop from "./components/DragDropContext";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Gallery from "./components/Gallery";
@@ -28,7 +29,11 @@ function App(props) {
           <Route path="/slider">
             <AwesomeSlider {...props} />
           </Route>
+          <Route path="/slider/:id">
+            <AwesomeSlider {...props} />
+          </Route>
           <Route path="/">
+            {/* <DragDrop /> */}
             <Home {...props} />
           </Route>
         </Switch>

@@ -4,7 +4,7 @@ import { URL, DEV_URL, URL_PATHS } from "../constants/api.constants";
 
 class Api {
   instance = axios.create({
-    baseURL: URL,
+    baseURL: DEV_URL,
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -59,6 +59,11 @@ class Api {
     const data = await this.post(URL_PATHS.Upload, params, {});
     return data;
   }
+  async addNewSlider(params) {
+    const data = await this.post(URL_PATHS.slider, params, {});
+    return data;
+  }
+
   async deleteImage(params) {
     const data = await this.post(URL_PATHS.deleteImage, params, {});
     return data;

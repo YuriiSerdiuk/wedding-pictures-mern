@@ -7,5 +7,5 @@ export const URL_PATHS = {
   Upload: "/upload/photo",
   GetImages: "/upload/photos",
   deleteImage: "/upload/delete",
-  Test: "",
+  slider: "/slider",
 };

@@ -77,6 +77,15 @@ const GalleryContainer = (props) => {
     setHandleOpen({ open: true });
   };
 
+  const addNewSlider = async (userId, imagesInSlider) => {
+    const result = await apiServise.addNewSlider({
+      userId,
+      imagesInSlider,
+    });
+
+    console.log(result);
+  };
+
   return (
     <Gallery
       applicationData={applicationData}
@@ -88,6 +97,7 @@ const GalleryContainer = (props) => {
       slideIndex={slideIndex}
       setSlideIndex={setSlideIndex}
       setHandleOpen={setHandleOpen}
+      addNewSlider={addNewSlider}
       {...props}
     />
   );
