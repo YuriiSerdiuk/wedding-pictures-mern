@@ -22,6 +22,7 @@ import WallpaperIcon from "@material-ui/icons/Wallpaper";
 
 import UploadButton from "../UploadButton";
 import PhotoLayaut from "../PhotoLayaut";
+import SlideshowIcon from "@material-ui/icons/Slideshow";
 
 const drawerWidth = 240;
 
@@ -238,19 +239,23 @@ export default function MiniDrawer(props) {
             key="Create Share link"
           >
             <ListItemIcon>
+              <SlideshowIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Show preview Slider`} />
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => {
+              // history.push("/slider");
+              alert("open additional menu");
+            }}
+            key="Generate Slider Link"
+          >
+            <ListItemIcon>
               <ShareIcon />
             </ListItemIcon>
-            <ListItemText primary={`Go to  Slider`} />
+            <ListItemText primary={`Generate Slider Link`} />
           </ListItem>
-
-          {/* {["Gallery", "Create Share link", "Preview"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))} */}
         </List>
         <Divider />
         {/* <List>
