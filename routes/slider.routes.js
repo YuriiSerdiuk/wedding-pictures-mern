@@ -6,7 +6,12 @@ const router = Router();
 //get Slider
 router.get("/", async (req, res) => {
   try {
-    console.log("req", req);
+    const sliderId = req.query["0"];
+    // get slider
+    const slider = await Slider.findOne({ _id: sliderId });
+    // console.log("sliderId", slider);
+
+    res.status(200).json({ slider });
   } catch (error) {
     res.status(500).json({ message: "Some problems with get slider" });
   }

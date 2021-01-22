@@ -64,6 +64,11 @@ class Api {
     return data;
   }
 
+  async getSlider(params) {
+    const data = await this.get(URL_PATHS.slider, params, {});
+    return data;
+  }
+
   async deleteImage(params) {
     const data = await this.post(URL_PATHS.deleteImage, params, {});
     return data;

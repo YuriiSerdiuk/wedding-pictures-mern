@@ -119,7 +119,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer(props) {
-  const { auth, handleLogOut, addNewSlider } = props;
+  console.log(props);
+  const { auth, handleLogOut, addNewSlider, applicationData } = props;
   const { userId } = auth;
   const classes = useStyles();
   const theme = useTheme();
@@ -247,9 +248,8 @@ export default function MiniDrawer(props) {
           <ListItem
             button
             onClick={() => {
-              //todo clean this func
-              const imagesInSlider = [];
-              // add slider
+              const imagesInSlider = applicationData.photos;
+
               addNewSlider(userId, imagesInSlider);
             }}
             key="Generate Slider Link"

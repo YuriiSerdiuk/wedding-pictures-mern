@@ -8,7 +8,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const AwesomeSliderComponent = (props) => {
   const { photos = [] } = props;
-  console.log(photos);
+  // console.log(photos);
   return (
     <AutoplaySlider
       animation="cubeAnimation"
@@ -16,8 +16,8 @@ const AwesomeSliderComponent = (props) => {
       cancelOnInteraction={false} // should stop playing on user interaction
       interval={2000}
     >
-      {photos.map(({ href, name }) => (
-        <div>
+      {photos.map(({ href, name }, index) => (
+        <div key={index + name + href}>
           <img style={{ width: "100%" }} src={href} alt={name} />
         </div>
       ))}

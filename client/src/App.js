@@ -26,12 +26,13 @@ function App(props) {
           <Route path="/gallery">
             <Gallery {...props} />
           </Route>
-          <Route path="/slider">
-            <AwesomeSlider {...props} />
-          </Route>
           <Route path="/slider/:id">
             <AwesomeSlider {...props} />
           </Route>
+          <Route path="/slider">
+            <AwesomeSlider {...props} />
+          </Route>
+
           <Route path="/">
             {/* <DragDrop /> */}
             <Home {...props} />
