@@ -119,7 +119,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer(props) {
-  console.log(props);
   const { auth, handleLogOut, addNewSlider, applicationData } = props;
   const { userId } = auth;
   const classes = useStyles();

@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     const sliderId = req.query["0"];
     // get slider
     const slider = await Slider.findOne({ _id: sliderId });
-    // console.log("sliderId", slider);
+    console.log("sliderId", slider);
 
     res.status(200).json({ slider });
   } catch (error) {
