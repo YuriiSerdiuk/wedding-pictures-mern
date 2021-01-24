@@ -24,14 +24,14 @@ const ApplicationData = (state = initialState, action) => {
       };
 
     case SET_SLIDER_DATA:
-      const { imagesInSlider, owner, _id } = action.payload.slider;
+      const { _id } = action.payload.slider;
       return {
         ...state,
         isFetch: false,
-        photos: imagesInSlider,
         sliderId: _id,
-        owner,
+        ...action.payload.slider,
       };
+
     case FAILURE_RECEIVE_SLIDER_DATA:
       return {
         ...state,

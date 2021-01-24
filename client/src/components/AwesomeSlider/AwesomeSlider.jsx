@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
@@ -7,14 +7,15 @@ import "react-awesome-slider/dist/styles.css";
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const AwesomeSliderComponent = (props) => {
-  const { photos = [] } = props;
-  // console.log(photos);
+  const { photos, delay } = props;
+  console.log(props);
+
   return (
     <AutoplaySlider
       animation="cubeAnimation"
       play={true}
       cancelOnInteraction={false} // should stop playing on user interaction
-      interval={2000}
+      interval={delay || 5000}
     >
       {photos.map(({ href, name }, index) => (
         <div key={index + name + href}>

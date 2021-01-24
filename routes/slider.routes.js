@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     const sliderId = req.query["0"];
     // get slider
     const slider = await Slider.findOne({ _id: sliderId });
-    console.log("sliderId", slider);
+    // console.log("sliderId", slider);
 
     res.status(200).json({ slider });
   } catch (error) {
@@ -23,8 +23,10 @@ router.post("/", async (req, res) => {
     const { userId, imagesInSlider } = req.body;
 
     const slider = new Slider({
-      imagesInSlider,
+      photos,
       owner: userId,
+      delay: 5000,
+      sound: "href//todo",
     });
 
     await slider.save();
