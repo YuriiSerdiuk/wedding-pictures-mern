@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Gallery from "./Gallery";
+import Modal from "./modal";
 import apiServise from "../../api";
 import { toBase64, delay } from "../../utils/helpers";
 import { getPhotosMongoDB } from "../../redux/actions/applicationData.action";
+import { updateSliderLink } from "../../redux/actions/slider.action";
 import { getlogOut } from "../../redux/actions/auth.action";
 
 const GalleryContainer = (props) => {
+  const [open, setModalOpen] = React.useState(false);
   const auth = useSelector((state) => state.authorisation);
   const snackbar = useSelector((state) => state.snackbar);
   const applicationData = useSelector((state) => state.applicationData);
+  const slider = useSelector((state) => state.slider);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -77,29 +81,39 @@ const GalleryContainer = (props) => {
     setHandleOpen({ open: true });
   };
 
-  const addNewSlider = async (userId, imagesInSlider) => {
-    const result = await apiServise.addNewSlider({
-      userId,
-      imagesInSlider,
-    });
-
-    console.log(result);
+  const addNewSlider = async (props) => {
+    try {
+      const result = await apiServise.addNewSlider({
+        ...props,
+      });
+      if (result.status === 201) {
+        dispatch(updateSliderLink(result.data));
+      } else {
+        throw new Error("Error in creating new slider");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <Gallery
-      applicationData={applicationData}
-      snackbar={snackbar}
-      fileSelectedHendler={fileSelectedHendler}
-      handleLogOut={handleLogOut}
-      handleOpen={handleOpen}
-      handleClick={handleClick}
-      slideIndex={slideIndex}
-      setSlideIndex={setSlideIndex}
-      setHandleOpen={setHandleOpen}
-      addNewSlider={addNewSlider}
-      {...props}
-    />
+    <>
+      <Modal open={open} setOpen={setModalOpen} slider={slider} />
+      <Gallery
+        applicationData={applicationData}
+        snackbar={snackbar}
+        fileSelectedHendler={fileSelectedHendler}
+        handleLogOut={handleLogOut}
+        handleOpen={handleOpen}
+        handleClick={handleClick}
+        slideIndex={slideIndex}
+        setSlideIndex={setSlideIndex}
+        setHandleOpen={setHandleOpen}
+        addNewSlider={addNewSlider}
+        setModalOpen={setModalOpen}
+        {...props}
+      />
+    </>
   );
 };
 

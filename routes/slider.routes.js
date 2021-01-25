@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 // add  new slider
 router.post("/", async (req, res) => {
   try {
-    const { userId, imagesInSlider } = req.body;
+    const { userId, photos } = req.body;
 
     const slider = new Slider({
       photos,
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
 
     const user = await User.findOne({ _id: userId });
 
-    res.status(201).json({ user: user });
+    res.status(201).json({ user: user, slider });
   } catch (error) {
     console.log("error", error);
     res
