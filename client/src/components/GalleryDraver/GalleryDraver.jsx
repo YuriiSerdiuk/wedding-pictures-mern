@@ -168,7 +168,6 @@ export default function MiniDrawer(props) {
               Add image
             </Box>
           </div>
-          {/* // todo add rout button */}
           <div className={classes.right}>
             <Link to="/" className={classes.rightLink}>
               {"Home".toLocaleUpperCase()}

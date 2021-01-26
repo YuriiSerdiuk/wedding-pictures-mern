@@ -39,7 +39,6 @@ export default function TransitionsModal(props) {
   };
 
   function copyToClipboard() {
-    //todo create ability to coppy the link
     navigator.clipboard.writeText(link || "error with creating share link");
     setCopySuccess("successfully copied");
   }

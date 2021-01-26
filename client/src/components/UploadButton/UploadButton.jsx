@@ -33,6 +33,7 @@ export default function UploadButtons(props) {
         className={classes.input}
         id="icon-button-file"
         type="file"
+        multiple
         onChange={props.fileSelectedHendler}
       />
       <label htmlFor="icon-button-file">
