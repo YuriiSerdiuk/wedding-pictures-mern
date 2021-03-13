@@ -58,15 +58,11 @@ function SignUp(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     setSent(true);
 
     await fetchSignUp({
-      firstName,
-      lastName,
       email,
       password,
     });
@@ -75,17 +71,17 @@ function SignUp(props) {
   };
 
   return (
-    <React.Fragment>
+    <>
       <AppAppBar />
       <AppForm>
-        <React.Fragment>
+        <>
           <Typography variant="h3" gutterBottom marked="center" align="center">
             Sign Up
           </Typography>
           <Typography variant="body2" align="center">
             <Link to="/sign-in">Already have an account?</Link>
           </Typography>
-        </React.Fragment>
+        </>
         <Form
           onSubmit={handleSubmit}
           subscription={{ submitting: true }}
@@ -94,27 +90,6 @@ function SignUp(props) {
           {({ handleSubmit2, submitting }) => (
             <form onSubmit={handleSubmit} className={classes.form} noValidate>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    autoFocus
-                    component={RFTextField}
-                    autoComplete="fname"
-                    fullWidth
-                    label="First name"
-                    name="firstName"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    autoComplete="lname"
-                    fullWidth
-                    label="Last name"
-                    name="lastName"
-                    required
-                  />
-                </Grid>
               </Grid>
               <Field
                 autoComplete="email"
@@ -159,7 +134,7 @@ function SignUp(props) {
         </Form>
       </AppForm>
       <AppFooter />
-    </React.Fragment>
+    </>
   );
 }
 

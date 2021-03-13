@@ -48,8 +48,8 @@ const AppContainer = (props) => {
       constants={constants}
       LANGUAGES={constants.LANGUAGES}
       gotoSignUp={gotoSignUp}
-      fetchSignUp={() => {
-        dispatch(fetchSignUp());
+      fetchSignUp={(e) => {
+        dispatch(fetchSignUp(e));
       }}
       fetchSignIn={(e) => {
         dispatch(fetchSignIn(e));
