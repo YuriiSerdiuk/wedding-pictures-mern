@@ -19,10 +19,12 @@ import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import ShareIcon from "@material-ui/icons/Share";
 import WallpaperIcon from "@material-ui/icons/Wallpaper";
+import BuildIcon from '@material-ui/icons/Build';
 
 import UploadButton from "../UploadButton";
 import PhotoLayaut from "../PhotoLayaut";
 import SlideshowIcon from "@material-ui/icons/Slideshow";
+import SettingSliderPanel from "../SettingSliderPanel";
 
 const drawerWidth = 240;
 
@@ -130,7 +132,7 @@ export default function MiniDrawer(props) {
   const { userId } = auth;
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   let history = useHistory();
 
   const handleDrawerOpen = () => {
@@ -241,6 +243,19 @@ export default function MiniDrawer(props) {
           <ListItem
             button
             onClick={() => {
+              alert('Configuring slider');
+            }}
+            key="test"
+          >
+            <ListItemIcon>
+              <BuildIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Configuring slider`} />
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={() => {
               history.push("/slider");
             }}
             key="Create Share link"
@@ -250,6 +265,7 @@ export default function MiniDrawer(props) {
             </ListItemIcon>
             <ListItemText primary={`Show preview Slider`} />
           </ListItem>
+
           <ListItem
             button
             onClick={() => {
@@ -263,6 +279,7 @@ export default function MiniDrawer(props) {
             </ListItemIcon>
             <ListItemText primary={`Generate Slider Link`} />
           </ListItem>
+
         </List>
         <Divider />
         {/* <List>
@@ -279,6 +296,7 @@ export default function MiniDrawer(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <PhotoLayaut {...props} />
+        <SettingSliderPanel/>
       </main>
     </div>
   );
