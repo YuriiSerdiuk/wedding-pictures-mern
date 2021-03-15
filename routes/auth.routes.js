@@ -7,6 +7,7 @@ const router = Router();
 router.get("/", (req, res) => {
   res.json({ test: " auth message!" });
 });
+
 router.post("/", (req, res) => {
   res.json({ test: " auth post!" });
 });

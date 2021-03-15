@@ -8,4 +8,5 @@ export const URL_PATHS = {
   GetImages: "/upload/photos",
   deleteImage: "/upload/delete",
   slider: "/slider",
+  Test:'/auth/'
 };
