@@ -1,8 +1,7 @@
-import React ,{useEffect}from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
-import Api from './api';
 // import DragDrop from "./components/DragDropContext";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -14,17 +13,6 @@ function App(props) {
   const {
     auth: { isAuthenticated },
   } = props;
-
-  useEffect(()=>{
-  const interval =   setInterval(()=> {
-      console.log('Ping');
-      Api.getWakeUp();
-    },300000);
-    return() => {
-      clearInterval(interval);
-    }
-  });
-
 
   return (
     <div className="App">

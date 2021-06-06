@@ -6,6 +6,7 @@ import Typography from "../components/Typography";
 import ProductHeroLayout from "./ProductHeroLayout";
 
 import main from "../../../assets/images/main.jpg";
+import {Link} from "react-router-dom";
 const backgroundImage = main;
 
 const styles = (theme) => ({
@@ -27,6 +28,9 @@ const styles = (theme) => ({
   more: {
     marginTop: theme.spacing(2),
   },
+  rightLink : {
+    color: "#ffffff",
+  }
 });
 
 function ProductHero(props) {
@@ -62,7 +66,12 @@ function ProductHero(props) {
         Register
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-        Or sign in
+
+
+        <Link to="/sign-in" className={classes.rightLink}>
+          Or sign in
+        </Link>
+
       </Typography>
     </ProductHeroLayout>
   );

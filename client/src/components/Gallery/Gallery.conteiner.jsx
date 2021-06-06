@@ -40,7 +40,7 @@ const GalleryContainer = (props) => {
       const regex = /^[a-z]+/gm;
       const type = regex.exec(file.type);
 
-      (async function Main() {
+      await (async function Main() {
         const obj = {
           name: file.name,
           size: file.size,
