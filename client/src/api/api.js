@@ -1,6 +1,6 @@
 import axios from "axios";
 // eslint-disable-next-line
-import { URL, DEV_URL, URL_PATHS } from "../constants/api.constants";
+import {URL, DEV_URL, URL_PATHS} from "../constants/api.constants";
 
 class Api {
   instance = axios.create({
@@ -12,10 +12,11 @@ class Api {
   });
 
   async get(url, params) {
-    const response = await this.instance.get(url, { params });
+    const response = await this.instance.get(url, {params});
 
     return response;
   }
+
   async post(url, data, options) {
     const response = await this.instance.post(url, data, options);
 
@@ -59,6 +60,7 @@ class Api {
     const data = await this.post(URL_PATHS.Upload, params, {});
     return data;
   }
+
   async addNewSlider(params) {
     const data = await this.post(URL_PATHS.slider, params, {});
     return data;
