@@ -56,10 +56,10 @@ function ProductValues(props) {
                 src="/static/themes/onepirate/productValues1.svg"
                 alt="suitcase"
               /> */}
-              <Typography variant="h6" className={classes.title}>
+              <Typography variant='h6' className={classes.title}>
                 Іhare photos
               </Typography>
-              <Typography variant="h5">
+              <Typography variant='h5'>
                 {"Make a gallery of wedding photos"}
                 {", and share with friends."}
               </Typography>
@@ -72,10 +72,10 @@ function ProductValues(props) {
                 src="/static/themes/onepirate/productValues2.svg"
                 alt="graph"
               /> */}
-              <Typography variant="h6" className={classes.title}>
+              <Typography variant='h6' className={classes.title}>
                 Slide effect
               </Typography>
-              <Typography variant="h5">
+              <Typography variant='h5'>
                 {"Make viewing photos unforgettable by adding visual "}
                 {"and sound effects."}
               </Typography>
@@ -88,11 +88,11 @@ function ProductValues(props) {
                 src="/static/themes/onepirate/productValues3.svg"
                 alt="clock"
               /> */}
-              <Typography variant="h6" className={classes.title}>
+              <Typography variant='h6' className={classes.title}>
                 free service
               </Typography>
-              <Typography variant="h5">
-                {"we take care of your dreams "}
+              <Typography variant='h5'>
+                {"We take care of your dreams."}
                 {/* {"that you will not find anywhere else."} */}
               </Typography>
             </div>
