@@ -1,4 +1,4 @@
-export const URL = "https://wedding-pictures.herokuapp.com";
+export const URL = "https://wedding-pics.fun";
 export const DEV_URL = "http://localhost:9988";
 
 export const URL_PATHS = {
