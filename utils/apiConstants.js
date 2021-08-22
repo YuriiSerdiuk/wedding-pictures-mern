@@ -1,4 +1,4 @@
 module.exports.baseUrl = {
   develop: "http://localhost:9988",
-  heroku: "https://wedding-pictures.herokuapp.com",
+  host: "http://wedding-pics.fun",
 };
