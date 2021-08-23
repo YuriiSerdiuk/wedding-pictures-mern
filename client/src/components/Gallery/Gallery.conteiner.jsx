@@ -34,13 +34,17 @@ const GalleryContainer = (props) => {
 
   // upload uploaded file to the server storage
   const postFiles = (files) => {
+    console.log('#-files',files);
     async function delayedLog(item) {
+      console.log('#-start async func');
       await delay(2000);
       let file = item;
+      console.log('#-item',item);
       const regex = /^[a-z]+/gm;
       const type = regex.exec(file.type);
-
+      console.log('#-type',type);
       await (async function Main() {
+        console.log('#-start async func 2');
         const obj = {
           name: file.name,
           size: file.size,
@@ -51,12 +55,14 @@ const GalleryContainer = (props) => {
           lastModifiedDate: file.lastModifiedDate,
           base64: await toBase64(file),
         };
+        console.log('#-obj',obj);
         try {
-          await apiServise.uploadImage(obj);
-
-          auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+          console.log('#-try');
+         const res =  await apiServise.uploadImage(obj);
+          console.log('#-res',res);
+          // auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
         } catch (error) {
-          alert("error upload");
+          alert(" error upload");
         }
       })();
     }
