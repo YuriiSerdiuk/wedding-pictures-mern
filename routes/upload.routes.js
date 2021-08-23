@@ -6,7 +6,7 @@ const { baseUrl } = require("../utils/apiConstants");
 const Photo = require("../models/Photo");
 const router = Router();
 
-// get imaget,in post method
+// get images,in post method
 router.post("/photos", async (req, res) => {
   try {
     const { userId } = req.body;

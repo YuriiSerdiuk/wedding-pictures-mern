@@ -60,9 +60,9 @@ const GalleryContainer = (props) => {
           console.log('#-try');
          const res =  await apiServise.uploadImage(obj);
           console.log('#-res',res);
-          // auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+          auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
         } catch (error) {
-          alert(" error upload");
+          alert(` error upload ${error}`);
         }
       })();
     }
