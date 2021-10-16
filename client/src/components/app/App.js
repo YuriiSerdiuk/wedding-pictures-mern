@@ -1,13 +1,13 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./components/Home";
-// import DragDrop from "./components/DragDropContext";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
-import Gallery from "./components/Gallery";
-import AwesomeSlider from "./components/AwesomeSlider";
 
+import Home from "../Home";
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
+import Gallery from "../Gallery";
+import AwesomeSlider from "../AwesomeSlider";
+
+import "./App.css";
 
 function App(props) {
   const {

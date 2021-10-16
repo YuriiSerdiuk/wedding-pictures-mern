@@ -48,7 +48,6 @@ function AppAppBar(props) {
     <div>
       <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
-          <p>Version 1.0</p>
           <div className={classes.left} />
           <div className={classes.right}>
             <Link to="/" className={classes.rightLink}>

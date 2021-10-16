@@ -8,9 +8,9 @@ import {
   fetchSignUp,
   fetchSignIn,
   storageSignIn,
-} from "./redux/actions/auth.action";
-import { getSnackbarMessage } from "./redux/actions/snackbar.action";
-import { storageName } from "./constants/misc.constants";
+} from "../../redux/actions/auth.action";
+import { getSnackbarMessage } from "../../redux/actions/snackbar.action";
+import { storageName } from "../../constants/misc.constants";
 
 const AppContainer = (props) => {
   const { enqueueSnackbar } = useSnackbar();
