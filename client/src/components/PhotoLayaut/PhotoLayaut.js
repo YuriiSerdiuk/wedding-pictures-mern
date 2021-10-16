@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -7,8 +7,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useDispatch } from "react-redux";
+import AutoRotatingCarousel from "../AutoRotatingCarouselModal";
 
-import { updateApplicationData } from "../../redux/actions/applicationData.action";
+import {getPhotosMongoDB, updateApplicationData} from "../../redux/actions/applicationData.action";
 import api from "../../api";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FullWidthGrid(props) {
-  const { applicationData = [], handleClick } = props;
+  const { applicationData , handleClick,auth, fileSelectedHendler } = props;
+
+  useEffect(() => {
+    auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+    // eslint-disable-next-line
+  }, [auth]);
+
 
   const { photos } = applicationData;
   const dispatch = useDispatch();
@@ -58,9 +65,44 @@ export default function FullWidthGrid(props) {
   const handleDelete = (_id, owner) => {
     deleteImage({ id: _id, owner });
   };
+
   return (
+    <>
+
+    <AutoRotatingCarousel handleOpen={true} {...props} />
+
     <div className={classes.root}>
+
+
       <Grid container spacing={3}>
+        <Grid key='upload' item xs={12} sm={3}>
+          <Paper className={classes.paper}      style={{
+            // objectFit: 'contain',
+            backgroundImage: 'url(https://cdn-icons-png.flaticon.com/512/2297/2297819.png)',
+            backgroundRepeat:'no-repeat',
+            backgroundSize: '40%',
+            backgroundPosition: 'center',
+            border: '1px solid'
+          }}>
+            <CardActionArea >
+              <input
+                style={{
+                  opacity:'0.0'  ,
+                  height:"140px"  ,
+                  cursor:'pointer'
+                }}
+                accept="image/*"
+                name="myImage"
+                className={classes.input}
+                id="icon-button-file"
+                type="file"
+                multiple
+                onChange={props.fileSelectedHendler}
+              />
+            </CardActionArea>
+          </Paper>
+        </Grid>
+
         {photos.map((item, index) => {
           const { href, name, _id, owner } = item;
 
@@ -96,5 +138,6 @@ export default function FullWidthGrid(props) {
         })}
       </Grid>
     </div>
+    </>
   );
 }

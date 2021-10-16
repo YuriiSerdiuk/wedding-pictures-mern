@@ -17,6 +17,7 @@ const AppContainer = (props) => {
   const auth = useSelector((state) => state.authorisation);
   const snackbar = useSelector((state) => state.snackbar);
   const constants = useSelector((state) => state.constants);
+  const applicationData = useSelector((state) => state.applicationData);
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -44,6 +45,8 @@ const AppContainer = (props) => {
   return (
     <App
       auth={auth}
+      dispatch={dispatch}
+      applicationData={applicationData}
       snackbar={snackbar}
       constants={constants}
       LANGUAGES={constants.LANGUAGES}

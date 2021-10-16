@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Gallery from "./Gallery";
 import Modal from "./modal";
 import apiServise from "../../api";
 import { toBase64, delay } from "../../utils/helpers";
 import { getPhotosMongoDB } from "../../redux/actions/applicationData.action";
 import { updateSliderLink } from "../../redux/actions/slider.action";
 import { getlogOut } from "../../redux/actions/auth.action";
+import AutoRotatingCarousel from "../AutoRotatingCarouselModal";
+import PhotoLayaut from '../PhotoLayaut'
 
 const GalleryContainer = (props) => {
   const [open, setModalOpen] = React.useState(false);
@@ -87,38 +88,26 @@ const GalleryContainer = (props) => {
     setHandleOpen({ open: true });
   };
 
-  const addNewSlider = async (props) => {
-    try {
-      const result = await apiServise.addNewSlider({
-        ...props,
-      });
-      if (result.status === 201) {
-        dispatch(updateSliderLink(result.data));
-      } else {
-        throw new Error("Error in creating new slider");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
-      <Modal open={open} setOpen={setModalOpen} slider={slider} />
-      <Gallery
-        applicationData={applicationData}
-        snackbar={snackbar}
-        fileSelectedHendler={fileSelectedHendler}
-        handleLogOut={handleLogOut}
+      {/*<Modal open={open} setOpen={setModalOpen} slider={slider} />*/}
+      <AutoRotatingCarousel
         handleOpen={handleOpen}
+        setHandleOpen={setHandleOpen}
+        applicationData={applicationData}
+        setSlideIndex={setSlideIndex}
+        snackbar={snackbar}
+        handleLogOut={handleLogOut}
         handleClick={handleClick}
         slideIndex={slideIndex}
-        setSlideIndex={setSlideIndex}
-        setHandleOpen={setHandleOpen}
-        addNewSlider={addNewSlider}
         setModalOpen={setModalOpen}
-        {...props}
-      />
+
+        {...props} />
+      <PhotoLayaut
+        fileSelectedHendler={fileSelectedHendler}
+        handleClick={handleClick}
+        setSlideIndex={setSlideIndex}
+        {...props}/>
     </>
   );
 };

@@ -21,8 +21,6 @@ import ShareIcon from "@material-ui/icons/Share";
 import WallpaperIcon from "@material-ui/icons/Wallpaper";
 import BuildIcon from '@material-ui/icons/Build';
 
-import UploadButton from "../UploadButton";
-import PhotoLayaut from "../PhotoLayaut";
 import SlideshowIcon from "@material-ui/icons/Slideshow";
 import SettingSliderPanel from "../SettingSliderPanel";
 
@@ -123,10 +121,10 @@ const useStyles = makeStyles((theme) => ({
 export default function MiniDrawer(props) {
   const {
     auth,
-    handleLogOut,
     addNewSlider,
     applicationData,
     setModalOpen,
+    children
   } = props;
   const { photos } = applicationData;
   const { userId } = auth;
@@ -135,74 +133,69 @@ export default function MiniDrawer(props) {
   const [open, setOpen] = React.useState(true);
   let history = useHistory();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
+const toogleDraverButton = () =>{
+  setOpen(!open);
+}
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar className={classes.toolbar}>
-          <div className={classes.left}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open,
-              })}
-            >
-              <MenuIcon />
-            </IconButton>
-            <UploadButton {...props} />
-            <Box className={classes.subAddIcon} component="span" m={1}>
-              Add image
-            </Box>
-          </div>
-          <div className={classes.right}>
-            <Link to="/" className={classes.rightLink}>
-              {"Home".toLocaleUpperCase()}
-            </Link>
-            {auth.isAuthenticated ? (
-              <>
-                <Link to="/gallery" className={classes.rightLink}>
-                  {"Gallery".toLocaleUpperCase()}
-                </Link>
-                <Link
-                  to="/"
-                  className={classes.rightLink}
-                  onClick={handleLogOut}
-                >
-                  {"logout".toLocaleUpperCase()}
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link to="/sign-in" className={classes.rightLink}>
-                  {"Sign In".toLocaleUpperCase()}
-                </Link>
-                <Link
-                  to="/sign-up"
-                  className={clsx(classes.rightLink, classes.linkSecondary)}
-                >
-                  {"Sign Up".toLocaleUpperCase()}
-                </Link>
-              </>
-            )}
-          </div>
-        </Toolbar>
-      </AppBar>
+      {/*<AppBar*/}
+      {/*  position="fixed"*/}
+      {/*  className={clsx(classes.appBar, {*/}
+      {/*    [classes.appBarShift]: open,*/}
+      {/*  })}*/}
+      {/*>*/}
+      {/*  <Toolbar className={classes.toolbar}>*/}
+      {/*    <div className={classes.left}>*/}
+      {/*      <IconButton*/}
+      {/*        color="inherit"*/}
+      {/*        aria-label="open drawer"*/}
+      {/*        onClick={handleDrawerOpen}*/}
+      {/*        edge="start"*/}
+      {/*        className={clsx(classes.menuButton, {*/}
+      {/*          [classes.hide]: open,*/}
+      {/*        })}*/}
+      {/*      >*/}
+      {/*        <MenuIcon />*/}
+      {/*      </IconButton>*/}
+      {/*      <UploadButton {...props} />*/}
+      {/*      <Box className={classes.subAddIcon} component="span" m={1}>*/}
+      {/*        Add image*/}
+      {/*      </Box>*/}
+      {/*    </div>*/}
+      {/*    <div className={classes.right}>*/}
+      {/*      <Link to="/" className={classes.rightLink}>*/}
+      {/*        {"Home".toLocaleUpperCase()}*/}
+      {/*      </Link>*/}
+      {/*      {auth.isAuthenticated ? (*/}
+      {/*        <>*/}
+      {/*          <Link to="/gallery" className={classes.rightLink}>*/}
+      {/*            {"Gallery".toLocaleUpperCase()}*/}
+      {/*          </Link>*/}
+      {/*          <Link*/}
+      {/*            to="/"*/}
+      {/*            className={classes.rightLink}*/}
+      {/*            onClick={handleLogOut}*/}
+      {/*          >*/}
+      {/*            {"2logout".toLocaleUpperCase()}*/}
+      {/*          </Link>*/}
+      {/*        </>*/}
+      {/*      ) : (*/}
+      {/*        <>*/}
+      {/*          <Link to="/sign-in" className={classes.rightLink}>*/}
+      {/*            {"Sign In".toLocaleUpperCase()}*/}
+      {/*          </Link>*/}
+      {/*          <Link*/}
+      {/*            to="/sign-up"*/}
+      {/*            className={clsx(classes.rightLink, classes.linkSecondary)}*/}
+      {/*          >*/}
+      {/*            {"Sign Up".toLocaleUpperCase()}*/}
+      {/*          </Link>*/}
+      {/*        </>*/}
+      {/*      )}*/}
+      {/*    </div>*/}
+      {/*  </Toolbar>*/}
+      {/*</AppBar>*/}
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
@@ -217,11 +210,11 @@ export default function MiniDrawer(props) {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+          <IconButton onClick={toogleDraverButton}>
+            {open ? (
+                <ChevronLeftIcon />
             ) : (
-              <ChevronLeftIcon />
+              <ChevronRightIcon />
             )}
           </IconButton>
         </div>
@@ -230,7 +223,7 @@ export default function MiniDrawer(props) {
           <ListItem
             button
             onClick={() => {
-              history.push("/gallery");
+              history.push("/wrapper/gallery");
             }}
             key="Gallery"
           >
@@ -270,7 +263,8 @@ export default function MiniDrawer(props) {
             button
             onClick={() => {
               addNewSlider({ userId, photos });
-              setModalOpen(true);
+              //todo fixed generate slider link
+              // setModalOpen(true);
             }}
             key="Generate Slider Link"
           >
@@ -294,9 +288,7 @@ export default function MiniDrawer(props) {
         </List> */}
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <PhotoLayaut {...props} />
-        <SettingSliderPanel/>
+        { children }
       </main>
     </div>
   );

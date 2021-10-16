@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+
 import { withStyles } from "@material-ui/core/styles";
+
 import AppBar from "../components/AppBar";
 import Toolbar, { styles as toolbarStyles } from "../components/Toolbar";
 import { getlogOut } from "../../../redux/actions/auth.action";
@@ -38,11 +41,8 @@ const styles = (theme) => ({
 });
 
 function AppAppBar(props) {
-  const { classes, auth, getlogOut } = props;
-
-  const handleLogOut = () => {
-    getlogOut();
-  };
+  const { classes, auth } = props;
+  const dispatch =useDispatch();
 
   return (
     <div>
@@ -55,13 +55,15 @@ function AppAppBar(props) {
             </Link>
             {auth.isAuthenticated ? (
               <>
-                <Link to="/gallery" className={classes.rightLink}>
+                <Link to="/wrapper/gallery" className={classes.rightLink}>
                   {"Gallery".toLocaleUpperCase()}
                 </Link>
                 <Link
                   to="/"
                   className={classes.rightLink}
-                  onClick={handleLogOut}
+                  onClick={()=>{
+                    dispatch(getlogOut());
+                  }}
                 >
                   {"logout".toLocaleUpperCase()}
                 </Link>
@@ -95,11 +97,8 @@ const mapStateToProps = ({ authorisation }) => ({
   auth: authorisation,
 });
 
-const mapDispatchToProps = {
-  getlogOut,
-};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(withStyles(styles)(AppAppBar));

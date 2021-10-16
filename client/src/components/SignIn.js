@@ -1,5 +1,6 @@
 import withRoot from "./modules/withRoot";
 import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // --- Post bootstrap -----
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -33,6 +34,7 @@ function SignIn(props) {
   const { fetchSignIn } = props;
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     //Weke up serwer
@@ -59,6 +61,7 @@ function SignIn(props) {
     setSent(true);
 
     await fetchSignIn({ email, password });
+    history.push("/wrapper/gallery");
     setSent(false);
   };
 

@@ -4,10 +4,11 @@ import { Switch, Route } from "react-router-dom";
 import Home from "../Home";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
-import Gallery from "../Gallery";
 import AwesomeSlider from "../AwesomeSlider";
+import Wrapper from '../wrapper';
+import Gallery from "../Gallery";
 
-import "./App.css";
+import "./App.scss";
 
 function App(props) {
   const {
@@ -24,9 +25,17 @@ function App(props) {
           <Route path="/sign-up">
             {isAuthenticated ? <Gallery {...props} /> : <SignUp {...props} />}
           </Route>
-          <Route path="/gallery">
-            <Gallery {...props} />
+
+          <Route path="/wrapper/gallery">
+            <Wrapper {...props} >
+              <Gallery {...props}/>
+            </Wrapper>
           </Route>
+
+          <Route path="/wrapper">
+            <Wrapper {...props} />
+          </Route>
+
           <Route path="/slider/:id">
             <AwesomeSlider {...props} />
           </Route>

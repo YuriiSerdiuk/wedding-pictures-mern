@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AppContainer from "./components/app/App.container";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux";
-import "./index.css";
+import "./index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
