@@ -1,42 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import "./DragDrop.css";
+import "./DragDrop.scss";
 
-const finalSpaceCharacters = [
-  {
-    id: "gary",
-    name: "Gary Goodspeed",
-    thumb:
-      "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
-  },
-  {
-    id: "cato",
-    name: "Little Cato",
-    thumb:
-      "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
-  },
-  {
-    id: "kvn",
-    name: "KVN",
-    thumb:
-      "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
-  },
-  {
-    id: "mooncake",
-    name: "Mooncake",
-    thumb:
-      "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
-  },
-  {
-    id: "quinn",
-    name: "Quinn Ergon",
-    thumb:
-      "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
-  },
-];
-
-const DragDrop = () => {
-  const [characters, updateCharacters] = useState(finalSpaceCharacters);
+const DragDrop = (props) => {
+  const {photos} = props;
+  const [characters, updateCharacters] = useState([]);
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -46,6 +14,10 @@ const DragDrop = () => {
 
     updateCharacters(items);
   };
+
+  useEffect(()=>{
+    updateCharacters(photos)
+  },[]);
 
   return (
     <div className="App">
@@ -60,9 +32,9 @@ const DragDrop = () => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {characters.map(({ id, name, thumb }, index) => {
+                  {characters.map(({ _id, name, href }, index) => {
                     return (
-                      <Draggable key={id} draggableId={id} index={index}>
+                      <Draggable key={_id} draggableId={_id} index={index}>
                         {(provided) => (
                           <li
                             ref={provided.innerRef}
@@ -70,9 +42,8 @@ const DragDrop = () => {
                             {...provided.dragHandleProps}
                           >
                             <div className="characters-thumb">
-                              <img src={thumb} alt={`${name} Thumb`} />
+                              <img src={href} alt={`${name} Thumb`} />
                             </div>
-                            <p>{name}</p>
                           </li>
                         )}
                       </Draggable>

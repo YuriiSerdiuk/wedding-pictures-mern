@@ -1,20 +1,12 @@
 import React from "react";
 import DragDropContext from "./DragDropContext";
-import { useSelector } from "react-redux";
-// import { useSelector, useDispatch } from "react-redux";
+ import { useSelector, useDispatch } from "react-redux";
 
-// import { getPhotosMongoDB } from "../../redux/actions/applicationData.action";
 const DragDropContextContainer = (props) => {
-  //   const auth = useSelector((state) => state.authorisation);
   const applicationData = useSelector((state) => state.applicationData);
-  //   const dispatch = useDispatch();
+  if(!applicationData.photos.length) return null
 
-  //   useEffect(() => {
-  //     auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
-  //     // eslint-disable-next-line
-  //   }, [auth]);
-
-  return <DragDropContext photos={applicationData.photos} {...props} />;
+  return <DragDropContext photos={[...applicationData.photos]} />;
 };
 
 export default DragDropContextContainer;

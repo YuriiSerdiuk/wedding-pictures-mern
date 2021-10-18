@@ -7,6 +7,7 @@ import SignUp from "../SignUp";
 import AwesomeSlider from "../AwesomeSlider";
 import Wrapper from '../wrapper';
 import Gallery from "../Gallery";
+import SettingSliderPanel from "../SettingSliderPanel";
 
 import "./App.scss";
 
@@ -32,8 +33,10 @@ function App(props) {
             </Wrapper>
           </Route>
 
-          <Route path="/wrapper">
-            <Wrapper {...props} />
+          <Route path="/wrapper/configure">
+            <Wrapper {...props} >
+              <SettingSliderPanel />
+            </Wrapper>
           </Route>
 
           <Route path="/slider/:id">
@@ -44,7 +47,6 @@ function App(props) {
           </Route>
 
           <Route path="/">
-            {/* <DragDrop /> */}
             <Home {...props} />
           </Route>
         </Switch>

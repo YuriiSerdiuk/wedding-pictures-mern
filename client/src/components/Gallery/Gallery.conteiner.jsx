@@ -18,6 +18,7 @@ const GalleryContainer = (props) => {
   const slider = useSelector((state) => state.slider);
   const dispatch = useDispatch();
 
+  // updatePhotos
   useEffect(() => {
     auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
     // eslint-disable-next-line

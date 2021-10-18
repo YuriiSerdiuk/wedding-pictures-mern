@@ -22,7 +22,7 @@ import WallpaperIcon from "@material-ui/icons/Wallpaper";
 import BuildIcon from '@material-ui/icons/Build';
 
 import SlideshowIcon from "@material-ui/icons/Slideshow";
-import SettingSliderPanel from "../SettingSliderPanel";
+
 
 const drawerWidth = 240;
 
@@ -236,7 +236,7 @@ const toogleDraverButton = () =>{
           <ListItem
             button
             onClick={() => {
-              alert('Configuring slider');
+              history.push("/wrapper/configure");
             }}
             key="test"
           >
