@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FullWidthGrid(props) {
-  const { applicationData , handleClick,auth, fileSelectedHendler } = props;
+  const { applicationData , handleClick,auth} = props;
 
   useEffect(() => {
     auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
@@ -57,7 +57,6 @@ export default function FullWidthGrid(props) {
     try {
       const data = await api.deleteImage({ id, owner });
 
-      console.log("data", data);
       dispatch(updateApplicationData(data.data.photos || []));
     } catch (error) {}
   };
@@ -68,12 +67,7 @@ export default function FullWidthGrid(props) {
 
   return (
     <>
-
-    <AutoRotatingCarousel handleOpen={true} {...props} />
-
     <div className={classes.root}>
-
-
       <Grid container spacing={3}>
         <Grid key='upload' item xs={12} sm={3}>
           <Paper className={classes.paper}      style={{
@@ -102,7 +96,6 @@ export default function FullWidthGrid(props) {
             </CardActionArea>
           </Paper>
         </Grid>
-
         {photos.map((item, index) => {
           const { href, name, _id, owner } = item;
 

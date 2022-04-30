@@ -1,12 +1,11 @@
 import React from "react";
 import DragDropContext from "./DragDropContext";
- import { useSelector, useDispatch } from "react-redux";
 
 const DragDropContextContainer = (props) => {
-  const applicationData = useSelector((state) => state.applicationData);
-  if(!applicationData.photos.length) return null
+  const { dragDropPhotos } = props;
 
-  return <DragDropContext photos={[...applicationData.photos]} />;
+if(!dragDropPhotos) return null
+  return  <DragDropContext photos={dragDropPhotos} {...props} />;
 };
 
 export default DragDropContextContainer;

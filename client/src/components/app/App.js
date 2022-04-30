@@ -10,14 +10,21 @@ import Gallery from "../Gallery";
 import SettingSliderPanel from "../SettingSliderPanel";
 
 import "./App.scss";
+import Modal from "../Gallery/modal";
+import {useSelector} from "react-redux";
 
 function App(props) {
+
+  const [open, setModalOpen] = React.useState(false);
+  const slider = useSelector((state) => state.slider);
+
   const {
     auth: { isAuthenticated },
   } = props;
 
   return (
     <div className="App">
+      <Modal open={open} setOpen={setModalOpen} slider={slider} />
       <div>
         <Switch>
           <Route path="/sign-in">
@@ -34,8 +41,8 @@ function App(props) {
           </Route>
 
           <Route path="/wrapper/configure">
-            <Wrapper {...props} >
-              <SettingSliderPanel />
+            <Wrapper {...props} open={open}   setModalOpen={setModalOpen}>
+              <SettingSliderPanel {...props} open={open}   setModalOpen={setModalOpen} />
             </Wrapper>
           </Route>
 

@@ -62,6 +62,7 @@ class Api {
   }
 
   async addNewSlider(params) {
+
     const data = await this.post(URL_PATHS.slider, params, {});
     return data;
   }

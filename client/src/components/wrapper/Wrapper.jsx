@@ -26,7 +26,8 @@ const Wrapper = (props) => {
 
   return <>
     <AppAppBar />
-    <GalleryDraver addNewSlider={addNewSlider} {...props} >
+    <GalleryDraver
+        addNewSlider={addNewSlider} {...props} >
       {children}
     </GalleryDraver>
   </>

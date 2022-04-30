@@ -7,15 +7,7 @@ import {
 import { URL, URL_PATHS } from "../../constants/api.constants";
 
 const initialState = {
-  sliderId: null,
-  isFetch: false,
-  link: "",
-  photos: [],
-  owner: null,
-  delay: null,
-  slideEffect: null,
-  sound: null,
-  error: "",
+
 };
 
 const ApplicationData = (state = initialState, action) => {
@@ -35,28 +27,6 @@ const ApplicationData = (state = initialState, action) => {
         ...action.payload.slider,
       };
 
-    case SET_SLIDER_DATA:
-      return {
-        ...state,
-        isFetch: false,
-        sliderId:action.payload._id,
-        link: `${URL}${URL_PATHS.slider}/${action.payload._id}`,
-         ...action.payload,
-      };
-
-    case FAILURE_RECEIVE_SLIDER_DATA:
-      return {
-        ...state,
-        sliderId: null,
-        isFetch: false,
-        link: "",
-        photos: [],
-        owner: null,
-        delay: null,
-        slideEffect: null,
-        sound: null,
-        error: "",
-      };
 
     default:
       return state;

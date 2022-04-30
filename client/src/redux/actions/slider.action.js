@@ -7,7 +7,7 @@ import {
 
 import Api from "../../api";
 
-const fetchSloderData = () => ({
+const fetchSliderData = () => ({
   type: FETCH_SLIDER_DATA,
 });
 
@@ -27,12 +27,21 @@ const failureReceiveSliderData = (error) => ({
 });
 
 export const getSliderData = (id) => async (dispatch) => {
-  dispatch(fetchSloderData());
+  dispatch(fetchSliderData());
   try {
     const data = await Api.getSlider(id);
-
-    dispatch(updateSliderData(data?.data));
+   dispatch(updateSliderData(data?.data.slider));
   } catch (error) {
     dispatch(failureReceiveSliderData(error));
+  }
+};
+
+export const generateNewSlider = (params) => async (dispatch) => {
+  try {
+    const data = await Api.addNewSlider(params);
+    console.log('data_2',data)
+     dispatch(updateSliderData(data?.data.slider));
+  } catch (error) {
+     dispatch(failureReceiveSliderData(error));
   }
 };

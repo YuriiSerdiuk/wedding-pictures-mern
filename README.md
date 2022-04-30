@@ -1,7 +1,19 @@
 # wedding-pictures-mern
 
-# for start 
-npm start
+ before run server =>
+ cd client & npm run build
+# for start server
+npm start 
 
-# deploy on heroku
-git push heroku main 
+# for run develop mode
+make build before run
+
+npm run dev
+
+# mongoDB account
+cb8593bc@gmail.com
+
+# for test login
+9988@gmail.com
+
+test@gmail.com

@@ -13,7 +13,7 @@ function Terms() {
   return (
     <React.Fragment>
       <AppAppBar />
-      <Container>
+      {/* <Container>
         <Box mt={7} mb={12}>
           <Typography variant="h3" gutterBottom marked="center" align="center">
             Terms
@@ -21,9 +21,9 @@ function Terms() {
           <Markdown>{terms}</Markdown>
         </Box>
       </Container>
-      <AppFooter />
+      <AppFooter /> */}
     </React.Fragment>
   );
 }
 
-export default withRoot(Terms);
+// export default withRoot(Terms);

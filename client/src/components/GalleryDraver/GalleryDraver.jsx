@@ -120,16 +120,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MiniDrawer(props) {
   const {
-    auth,
-    addNewSlider,
-    applicationData,
-    setModalOpen,
     children
   } = props;
-  const { photos } = applicationData;
-  const { userId } = auth;
+
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   let history = useHistory();
 
@@ -139,63 +134,6 @@ const toogleDraverButton = () =>{
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/*<AppBar*/}
-      {/*  position="fixed"*/}
-      {/*  className={clsx(classes.appBar, {*/}
-      {/*    [classes.appBarShift]: open,*/}
-      {/*  })}*/}
-      {/*>*/}
-      {/*  <Toolbar className={classes.toolbar}>*/}
-      {/*    <div className={classes.left}>*/}
-      {/*      <IconButton*/}
-      {/*        color="inherit"*/}
-      {/*        aria-label="open drawer"*/}
-      {/*        onClick={handleDrawerOpen}*/}
-      {/*        edge="start"*/}
-      {/*        className={clsx(classes.menuButton, {*/}
-      {/*          [classes.hide]: open,*/}
-      {/*        })}*/}
-      {/*      >*/}
-      {/*        <MenuIcon />*/}
-      {/*      </IconButton>*/}
-      {/*      <UploadButton {...props} />*/}
-      {/*      <Box className={classes.subAddIcon} component="span" m={1}>*/}
-      {/*        Add image*/}
-      {/*      </Box>*/}
-      {/*    </div>*/}
-      {/*    <div className={classes.right}>*/}
-      {/*      <Link to="/" className={classes.rightLink}>*/}
-      {/*        {"Home".toLocaleUpperCase()}*/}
-      {/*      </Link>*/}
-      {/*      {auth.isAuthenticated ? (*/}
-      {/*        <>*/}
-      {/*          <Link to="/gallery" className={classes.rightLink}>*/}
-      {/*            {"Gallery".toLocaleUpperCase()}*/}
-      {/*          </Link>*/}
-      {/*          <Link*/}
-      {/*            to="/"*/}
-      {/*            className={classes.rightLink}*/}
-      {/*            onClick={handleLogOut}*/}
-      {/*          >*/}
-      {/*            {"2logout".toLocaleUpperCase()}*/}
-      {/*          </Link>*/}
-      {/*        </>*/}
-      {/*      ) : (*/}
-      {/*        <>*/}
-      {/*          <Link to="/sign-in" className={classes.rightLink}>*/}
-      {/*            {"Sign In".toLocaleUpperCase()}*/}
-      {/*          </Link>*/}
-      {/*          <Link*/}
-      {/*            to="/sign-up"*/}
-      {/*            className={clsx(classes.rightLink, classes.linkSecondary)}*/}
-      {/*          >*/}
-      {/*            {"Sign Up".toLocaleUpperCase()}*/}
-      {/*          </Link>*/}
-      {/*        </>*/}
-      {/*      )}*/}
-      {/*    </div>*/}
-      {/*  </Toolbar>*/}
-      {/*</AppBar>*/}
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
@@ -259,33 +197,8 @@ const toogleDraverButton = () =>{
             <ListItemText primary={`Show preview Slider`} />
           </ListItem>
 
-          <ListItem
-            button
-            onClick={() => {
-              addNewSlider({ userId, photos });
-              //todo fixed generate slider link
-              // setModalOpen(true);
-            }}
-            key="Generate Slider Link"
-          >
-            <ListItemIcon>
-              <ShareIcon />
-            </ListItemIcon>
-            <ListItemText primary={`Generate Slider Link`} />
-          </ListItem>
-
         </List>
         <Divider />
-        {/* <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <main className={classes.content}>
         { children }
