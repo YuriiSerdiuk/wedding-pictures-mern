@@ -39,7 +39,6 @@ export const getSliderData = (id) => async (dispatch) => {
 export const generateNewSlider = (params) => async (dispatch) => {
   try {
     const data = await Api.addNewSlider(params);
-    console.log('data_2',data)
      dispatch(updateSliderData(data?.data.slider));
   } catch (error) {
      dispatch(failureReceiveSliderData(error));

@@ -17,16 +17,25 @@ const AwesomeSliderContainer = (props) => {
     } catch (error) {
       console.log("error", error);
     }
-
+// eslint-disable-next-line
   }, []);
 
   if (!!applicationData.photos.length) {
-    return <AwesomeSlider photos={applicationData.photos} {...props} />;
+    return <AwesomeSlider
+        photos={applicationData.photos}
+        interval={ 1000 }
+        sliderAnimation={'cubeAnimation'}
+
+    />;
   }
 
   return (
     !!slider.photos.length && (
-      <AwesomeSlider photos={slider.photos} delay={slider.delay} {...props} />
+      <AwesomeSlider
+          photos={slider.photos}
+          interval={slider.interval * 1000}
+          sliderAnimation={slider.sliderAnimation}
+      />
     )
   );
 };

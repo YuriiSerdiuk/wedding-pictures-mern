@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 import Home from "../Home";
 import SignIn from "../SignIn";
@@ -8,10 +9,9 @@ import AwesomeSlider from "../AwesomeSlider";
 import Wrapper from '../wrapper';
 import Gallery from "../Gallery";
 import SettingSliderPanel from "../SettingSliderPanel";
+import Modal from "../Gallery/modal";
 
 import "./App.scss";
-import Modal from "../Gallery/modal";
-import {useSelector} from "react-redux";
 
 function App(props) {
 
@@ -30,6 +30,7 @@ function App(props) {
           <Route path="/sign-in">
             {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />}
           </Route>
+
           <Route path="/sign-up">
             {isAuthenticated ? <Gallery {...props} /> : <SignUp {...props} />}
           </Route>
@@ -49,6 +50,7 @@ function App(props) {
           <Route path="/slider/:id">
             <AwesomeSlider {...props} />
           </Route>
+
           <Route path="/slider">
             <AwesomeSlider {...props} />
           </Route>

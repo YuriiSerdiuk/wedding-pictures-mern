@@ -88,7 +88,7 @@ const DragDrop = (props) => {
                                   aria-label="delete"
                                   className={classes.delIcon}
                               >
-                                <DeleteIcon fontSize="default" />
+                                <DeleteIcon fontSize="medium" />
                               </IconButton>
                             </div>
                           </li>

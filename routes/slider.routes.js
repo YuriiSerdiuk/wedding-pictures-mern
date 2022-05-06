@@ -19,12 +19,12 @@ router.get("/", async (req, res) => {
 // add  new slider
 router.post("/", async (req, res) => {
   try {
-    const { userId, photos = [], delay = 3000, sound = "href//todo" } = req.body;
-
+    const { userId, photos = [], delay = 1000, sound = "href//todo", sliderAnimation, interval } = req.body;
     const slider = new Slider({
       photos,
       owner: userId,
-      delay: delay,
+      interval: interval,
+      sliderAnimation:sliderAnimation,
       sound: sound,
     });
 

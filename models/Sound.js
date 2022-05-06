@@ -1,11 +1,9 @@
 const { Schema, model, Types } = require("mongoose");
 
 const schema = new Schema({
-  photos: Array,
+  href: String,
+  name: String,
   owner: { type: Types.ObjectId, ref: "User" },
-  interval: Number,
-  sliderAnimation:String,
-  sound: String,
 });
 
-module.exports = model("Slider", schema);
+module.exports = model("Sound", schema);

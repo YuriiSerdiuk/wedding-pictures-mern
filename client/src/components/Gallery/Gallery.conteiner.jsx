@@ -17,6 +17,7 @@ const GalleryContainer = (props) => {
   // updatePhotos
   useEffect(() => {
     auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+    // eslint-disable-next-line
   }, [auth]);
 
   const [handleOpen, setHandleOpen] = useState({ open: false });

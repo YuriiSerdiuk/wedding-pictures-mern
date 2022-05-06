@@ -30,10 +30,6 @@ export default function TransitionsModal(props) {
   const [copySuccess, setCopySuccess] = useState("");
   const classes = useStyles();
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };

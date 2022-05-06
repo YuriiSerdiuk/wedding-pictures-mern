@@ -60,6 +60,10 @@ class Api {
     const data = await this.post(URL_PATHS.Upload, params, {});
     return data;
   }
+  async uploadAudio(params) {
+    const data = await this.post(URL_PATHS.UploadAudio, params, {});
+    return data;
+  }
 
   async addNewSlider(params) {
 

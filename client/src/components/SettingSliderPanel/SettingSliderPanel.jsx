@@ -10,18 +10,22 @@ import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import AwesomeSlider from "react-awesome-slider";
+import ShareIcon from "@material-ui/icons/Share";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import AudiotrackRoundedIcon from '@mui/icons-material/AudiotrackRounded';
 
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "react-awesome-slider/dist/custom-animations/open-animation.css";
 import "react-awesome-slider/dist/custom-animations/fall-animation.css";
 import "react-awesome-slider/dist/custom-animations/fold-out-animation.css";
 import "react-awesome-slider/dist/custom-animations/scale-out-animation.css";
-import DragDrop from "../DragDropContext/DragDropContext.container";
-import {getPhotosMongoDB} from "../../redux/actions/applicationData.action";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ShareIcon from "@material-ui/icons/Share";
 
+import DragDrop from "../DragDropContext/DragDropContext.container";
+
+import {getPhotosMongoDB} from "../../redux/actions/applicationData.action";
 import {generateNewSlider} from "../../redux/actions/slider.action";
+
+import {postFiles} from '../../utils/upload';
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -70,7 +74,7 @@ export const SettingSliderPanel = ( props ) => {
   const auth = useSelector((state) => state.authorisation);
   const applicationData = useSelector((state) => state.applicationData);
   const [sliderAnimation, setSliderAnimation] = useState("cubeAnimation");
-  const [value, setValue] = useState(1);
+  const [sliderInterval, setSliderInterval] = useState(1);
   const [dragDropPhotos, setDragDropPhotos] = useState([]);
 
   useEffect(()=>{
@@ -81,6 +85,7 @@ export const SettingSliderPanel = ( props ) => {
   // updatePhotos
   useEffect(() => {
     auth?.userId && dispatch(getPhotosMongoDB(auth.userId));
+    // eslint-disable-next-line
   }, [auth]);
 
 
@@ -89,7 +94,14 @@ export const SettingSliderPanel = ( props ) => {
   };
 
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
+    setSliderInterval(newValue);
+  };
+
+  const fileSelectedHandler = async (event) => {
+    const file = Array.from(event.target.files);
+    if (file.length) {
+      postFiles(file,auth);
+    }
   };
 
   return (
@@ -120,7 +132,12 @@ export const SettingSliderPanel = ( props ) => {
   <div
       className={classes.generateLink}
        onClick={() => {
-         dispatch(generateNewSlider({ userId:auth.userId, photos:dragDropPhotos }));
+         dispatch(generateNewSlider({
+           userId:auth.userId,
+           photos:dragDropPhotos,
+           sliderAnimation:sliderAnimation,
+           interval: sliderInterval * 1000
+         }));
          setModalOpen(true);
        }}
   >
@@ -132,6 +149,32 @@ export const SettingSliderPanel = ( props ) => {
     </ListItemIcon>
   </div>
 
+          <div
+              className={classes.generateLink}
+          >
+            <Typography variant='h5' component='h5'>
+             Add music
+            </Typography>
+            <input
+                style={{
+                  opacity:'0.0'  ,
+                  height:"140px"  ,
+                  cursor:'pointer'
+                }}
+                accept=".mp3,audio/*"
+                name="myImage"
+                className={classes.generateLink}
+                id="icon-button-file"
+                type="file"
+                multiple
+                onChange={fileSelectedHandler}
+            />
+            <ListItemIcon>
+              <AudiotrackRoundedIcon/>
+            </ListItemIcon>
+          </div>
+
+
         </div>
         <Divider />
         <div className={classes.slider}>
@@ -139,9 +182,9 @@ export const SettingSliderPanel = ( props ) => {
             animation={sliderAnimation}
             play={true}
             cancelOnInteraction={false} // should stop playing on user interaction
-            interval={ value * 1000 }
+            interval={ sliderInterval * 1000 }
           >
-            { dragDropPhotos && dragDropPhotos.map((photo)=>{
+            { dragDropPhotos.map((photo)=>{
               return <div key={photo.href} data-src={photo.href} />;
             })}
           </AutoplaySlider>
@@ -152,7 +195,7 @@ export const SettingSliderPanel = ( props ) => {
             Slider interval
           </Typography>
           <Slider
-            value={value}
+            value={sliderInterval}
             onChange={handleSliderChange}
             getAriaValueText={valuetext}
             aria-labelledby='discrete-slider-small-steps'

@@ -7,7 +7,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useDispatch } from "react-redux";
-import AutoRotatingCarousel from "../AutoRotatingCarouselModal";
 
 import {getPhotosMongoDB, updateApplicationData} from "../../redux/actions/applicationData.action";
 import api from "../../api";
@@ -122,7 +121,7 @@ export default function FullWidthGrid(props) {
                     aria-label="delete"
                     className={classes.delIcon}
                   >
-                    <DeleteIcon fontSize="default" />
+                    <DeleteIcon fontSize="medium" />
                   </IconButton>
                 </div>
               </Paper>

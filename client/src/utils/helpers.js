@@ -6,8 +6,7 @@ export const toBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-export const checkSizeInUploadFile = (file, size) =>
-  file > size ? false : true;
+export const checkSizeInUploadFile = (file, size) =>  file <= size;
 
 export const getLocalStorageParce = (id) => {
   return JSON.parse(localStorage.getItem(id));
