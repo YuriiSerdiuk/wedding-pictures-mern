@@ -6,6 +6,7 @@ const { baseUrl } = require("../utils/apiConstants");
 const Photo = require("../models/Photo");
 const Sound = require("../models/Sound");
 const router = Router();
+const urlHost  = baseUrl.develop;
 
 // get images,in post method
 router.post("/photos", async (req, res) => {
@@ -40,14 +41,14 @@ router.post("/photo", async (req, res) => {
     });
 
     const photo = new Photo({
-      href: `${baseUrl.host}/${filepath}`,
+      href: `${urlHost}/${filepath}`,
       name: name,
       owner: userId,
     });
 
     await photo.save();
 
-    res.status(201).json({ image: `${baseUrl.host}/${filepath}` });
+    res.status(201).json({ image: `${urlHost}/${filepath}` });
   } catch (error) {
     console.log("error", error);
     res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });
@@ -82,14 +83,14 @@ router.post("/audio", async (req, res) => {
     });
 
     const sound = new Sound({
-      href: `${baseUrl.host}/${filepath}`,
+      href: `${urlHost}/${filepath}`,
       name: name,
       owner: userId,
     });
 
     await sound.save();
 
-    res.status(201).json({ image: `${baseUrl.host}/${filepath}` });
+    res.status(201).json({ image: `${urlHost}/${filepath}` });
   } catch (error) {
     console.log("error", error);
      res.status(500).json({ message: "Error with uploading audio" });

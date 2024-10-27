@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 import Home from "../Home";
 import SignIn from "../SignIn";
@@ -28,6 +28,7 @@ function App(props) {
       <div>
         <Switch>
           <Route path="/sign-in">
+            {/* {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />} */}
             {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />}
           </Route>
 
@@ -37,13 +38,13 @@ function App(props) {
 
           <Route path="/wrapper/gallery">
             <Wrapper {...props} >
-              <Gallery {...props}/>
+              <Gallery {...props} />
             </Wrapper>
           </Route>
 
           <Route path="/wrapper/configure">
-            <Wrapper {...props} open={open}   setModalOpen={setModalOpen}>
-              <SettingSliderPanel {...props} open={open}   setModalOpen={setModalOpen} />
+            <Wrapper {...props} open={open} setModalOpen={setModalOpen}>
+              <SettingSliderPanel {...props} open={open} setModalOpen={setModalOpen} />
             </Wrapper>
           </Route>
 

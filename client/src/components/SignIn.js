@@ -58,7 +58,8 @@ function SignIn(props) {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    setSent(true);
+    // setSent(true);
+    console.log('*** LOG IN ', email, password);
 
     await fetchSignIn({ email, password });
     history.push("/wrapper/gallery");
