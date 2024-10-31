@@ -7,10 +7,8 @@ node_modules
 # production
 package-lock.json
 
-.client/build
 
 /node_modules
 /.pnp
 .pnp.js
 /build
-/client/build
