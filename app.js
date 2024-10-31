@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 9988;
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const path = require("path");
 
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -24,15 +24,15 @@ app.get("*", (req, res) => {
 async function start() {
   try {
     // connect to mongoose DB
-    mongoose.connect(
-      // "mongodb+srv://cb8593bc:Racing-Bike-2000@cluster0.kmhay.gcp.mongodb.net/wedding-pictures?retryWrites=true&w=majority",
-      "mongodb+srv://din:_din@cluster0.h5ob5.mongodb.net/",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-      }
-    );
+    // mongoose.connect(
+    //   // "mongodb+srv://cb8593bc:Racing-Bike-2000@cluster0.kmhay.gcp.mongodb.net/wedding-pictures?retryWrites=true&w=majority",
+    //   "mongodb+srv://din:_din@cluster0.h5ob5.mongodb.net/",
+    //   {
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //     useCreateIndex: true,
+    //   }
+    // );
     console.log("connect to database");
 
     //start server
