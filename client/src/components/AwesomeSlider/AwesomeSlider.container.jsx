@@ -17,14 +17,14 @@ const AwesomeSliderContainer = (props) => {
     } catch (error) {
       console.log("error", error);
     }
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   if (!!applicationData.photos.length) {
     return <AwesomeSlider
-        photos={applicationData.photos}
-        interval={ 1000 }
-        sliderAnimation={'cubeAnimation'}
+      photos={applicationData.photos}
+      interval={1000}
+      sliderAnimation={'cubeAnimation'}
 
     />;
   }
@@ -32,9 +32,9 @@ const AwesomeSliderContainer = (props) => {
   return (
     !!slider.photos.length && (
       <AwesomeSlider
-          photos={slider.photos}
-          interval={slider.interval * 1000}
-          sliderAnimation={slider.sliderAnimation}
+        photos={slider.photos}
+        interval={slider.interval}
+        sliderAnimation={slider.sliderAnimation}
       />
     )
   );

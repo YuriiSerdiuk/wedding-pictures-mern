@@ -20,8 +20,8 @@ export const LANGUAGES = [
     code: "ua-UA",
     name: "Українська",
   },
-  {
-    code: "ru-RU",
-    name: "Русский",
-  },
+  // {
+  //   code: "ru-RU",
+  //   name: "Русский",
+  // },
 ];
