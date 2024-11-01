@@ -28,7 +28,6 @@ function App(props) {
       <div>
         <Switch>
           <Route path="/sign-in">
-            {/* {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />} */}
             {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />}
           </Route>
 
