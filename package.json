@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cd client && npm run build && cd .. && node app.js",
-    "dev": "nodemon app.js",
-    "dev:build": "cd client && npm run build && cd .. && nodemon app.js"
+    "start": "cd client && npm run build && cd .. && node app.js --openssl-legacy-provider",
+    "dev": "nodemon app.js --openssl-legacy-provider",
+    "dev:build": "cd client && npm run build && cd .. && nodemon app.js --openssl-legacy-provider"
   },
   "repository": {
     "type": "git",
