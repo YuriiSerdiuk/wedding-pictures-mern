@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
-  const { fetchSignIn } = props;
+  const { fetchSignIn, auth } = props;
+  const { isAuthenticated } = auth;
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
   const history = useHistory();
@@ -40,6 +41,10 @@ function SignIn(props) {
     //Weke up serwer
     apiService.getWakeUp();
   }, []);
+
+  if (isAuthenticated) {
+    history.push("/wrapper/gallery");
+  }
 
   const validate = (values) => {
     const errors = required(["email", "password"], values);
@@ -59,10 +64,9 @@ function SignIn(props) {
     const email = event.target.email.value;
     const password = event.target.password.value;
     // setSent(true);
-    console.log('*** LOG IN ', email, password);
 
-    await fetchSignIn({ email, password });
-    history.push("/wrapper/gallery");
+    fetchSignIn({ email, password });
+    // history.push("/wrapper/gallery");
     setSent(false);
   };
 

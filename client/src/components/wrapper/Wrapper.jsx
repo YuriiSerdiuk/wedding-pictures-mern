@@ -1,9 +1,10 @@
-import withRoot from "../modules/withRoot";
 import React from 'react';
+
+import withRoot from "../modules/withRoot";
 import AppAppBar from "../modules/views/AppAppBar";
 import GalleryDraver from "../GalleryDraver/GalleryDraver";
 import apiServise from "../../api/api";
-import {updateSliderLink} from "../../redux/actions/slider.action";
+import { updateSliderLink } from "../../redux/actions/slider.action";
 
 const Wrapper = (props) => {
   const { children, dispatch } = props;
@@ -27,7 +28,7 @@ const Wrapper = (props) => {
   return <>
     <AppAppBar />
     <GalleryDraver
-        addNewSlider={addNewSlider} {...props} >
+      addNewSlider={addNewSlider} {...props} >
       {children}
     </GalleryDraver>
   </>

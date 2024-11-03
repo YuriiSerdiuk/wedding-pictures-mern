@@ -18,21 +18,17 @@ function App(props) {
   const [open, setModalOpen] = React.useState(false);
   const slider = useSelector((state) => state.slider);
 
-  const {
-    auth: { isAuthenticated },
-  } = props;
-
   return (
     <div className="App">
       <Modal open={open} setOpen={setModalOpen} slider={slider} />
       <div>
         <Switch>
           <Route path="/sign-in">
-            {isAuthenticated ? <Gallery {...props} /> : <SignIn {...props} />}
+            <SignIn {...props} />
           </Route>
 
           <Route path="/sign-up">
-            {isAuthenticated ? <Gallery {...props} /> : <SignUp {...props} />}
+            <SignUp {...props} />
           </Route>
 
           <Route path="/wrapper/gallery">

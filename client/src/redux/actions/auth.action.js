@@ -70,12 +70,9 @@ export const fetchSignUp = (params) => async (dispatch) => {
 };
 
 export const fetchSignIn = (params) => async (dispatch) => {
-  console.log('*** data',params);
   try {
     dispatch(requestSighIn());
     const data = await apiService.getSignIn(params);
-
-    console.log('*** data 2',data);
 
     dispatch(
       getSnackbarMessage({
