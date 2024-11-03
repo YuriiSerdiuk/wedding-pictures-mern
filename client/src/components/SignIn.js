@@ -31,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
-  const { fetchSignIn, auth } = props;
-  const { isAuthenticated } = auth;
+  const { fetchSignIn, auth: { isAuthenticated } } = props;
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
   const history = useHistory();

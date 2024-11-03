@@ -8,8 +8,7 @@ import apiServise from "../../api/api";
 import { updateSliderLink } from "../../redux/actions/slider.action";
 
 const Wrapper = (props) => {
-  const { children, dispatch, auth } = props;
-  const { isAuthenticated } = auth;
+  const { children, dispatch, auth: { isAuthenticated } } = props;
 
   const history = useHistory();
 
