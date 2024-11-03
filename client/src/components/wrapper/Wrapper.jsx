@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import withRoot from "../modules/withRoot";
 import AppAppBar from "../modules/views/AppAppBar";
@@ -7,7 +8,15 @@ import apiServise from "../../api/api";
 import { updateSliderLink } from "../../redux/actions/slider.action";
 
 const Wrapper = (props) => {
-  const { children, dispatch } = props;
+  const { children, dispatch, auth } = props;
+  const { isAuthenticated } = auth;
+
+  const history = useHistory();
+
+  if (!isAuthenticated) {
+    console.log('work', props);
+    history.push('/sign-in');
+  }
 
   const addNewSlider = async ({ userId, photos }) => {
     try {

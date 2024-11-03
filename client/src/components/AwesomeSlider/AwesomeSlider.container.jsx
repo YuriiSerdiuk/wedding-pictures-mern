@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import AwesomeSlider from "./AwesomeSlider";
-import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import AwesomeSlider from "./AwesomeSlider";
 
 import { getSliderData } from "../../redux/actions/slider.action";
 

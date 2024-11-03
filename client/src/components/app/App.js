@@ -14,7 +14,6 @@ import Modal from "../Gallery/modal";
 import "./App.scss";
 
 function App(props) {
-
   const [open, setModalOpen] = React.useState(false);
   const slider = useSelector((state) => state.slider);
 

@@ -7,7 +7,7 @@ import App from "./App";
 import {
   fetchSignUp,
   fetchSignIn,
-  storageSignIn,
+  // storageSignIn,
 } from "../../redux/actions/auth.action";
 import { getSnackbarMessage } from "../../redux/actions/snackbar.action";
 
@@ -30,14 +30,14 @@ const AppContainer = (props) => {
     }
   }, [enqueueSnackbar, snackbar]);
 
-  // SignIn localStorage
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(storageName));
-    if (data && data.token) {
-      dispatch(storageSignIn(data));
-    }
-    // eslint-disable-next-line
-  }, [storageSignIn]);
+  // // SignIn localStorage
+  // useEffect(() => {
+  //   const data = JSON.parse(localStorage.getItem(storageName));
+  //   if (data && data.token) {
+  //     dispatch(storageSignIn(data));
+  //   }
+  //   // eslint-disable-next-line
+  // }, [storageSignIn]);
 
   const gotoSignUp = () => {
     history.push("/sign-up");
