@@ -5,7 +5,9 @@
 /build
 /.pnp
 .pnp.js
-build
+
+/src_old
+.package_old.json
 
 # testing
 /coverage
